@@ -1,0 +1,2 @@
+#! /bin/bash
+ssh -L 3128:localhost:13128 proxyuser@173.255.249.118 -N
