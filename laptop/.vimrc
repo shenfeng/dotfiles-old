@@ -1,5 +1,3 @@
-source /etc/vimrc
-
 syntax on
 filetype on
 filetype plugin on

@@ -1,8 +1,13 @@
 # .bashrc
 
 # Source global definitions
-if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+
+if [ -f /etc/bash.bashrc ]; then
+	. /etc/bash.bashrc 
+fi
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
 fi
 
 alias tw='sudo tcpdump -i any -s 65535 -w /tmp/tcpdump && wireshark /tmp/tcpdump'
