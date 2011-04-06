@@ -12,13 +12,28 @@ ln -s $DOTFILES/gitconfig ~/.gitconfig
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
+	echo "install vcprompt";
 	cd /tmp;
 	wget -c https://github.com/xvzf/vcprompt/raw/master/bin/vcprompt --no-check-certificate
 	chmod +x vcprompt;
 	mkdir -p ~/bin
 	mv vcprompt ~/bin/
 fi
-	
-	
 
-
+# install nofgw
+if [ ! -f ~/bin/nofgw ]; then
+	echo "install nofgw";
+	echo "#! /bin/bash" >> ~/bin/nofgw;
+	echo "ssh -L 3128:localhost:13128 shenfeng@173.255.249.118 -N" >> ~/bin/nofgw;
+	chmod +x ~/bin/nofgw;
+fi
+	
+# install lein
+if [ ! -f ~/bin/lein ]; then
+	echo "install lein";
+	cd /tmp;
+	wget -c https://github.com/technomancy/leiningen/raw/stable/bin/lein --no-check-certificate
+	chmod +x lein;
+	mkdir -p ~/bin
+	mv lein ~/bin/
+fi

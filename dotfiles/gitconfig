@@ -13,7 +13,7 @@
 	ui = always
 [diff]
 [diff]
-	tool = gvimdiff
+	tool = meld
 [difftool]
 	prompt = false
 [format]
