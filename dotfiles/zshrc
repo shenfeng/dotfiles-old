@@ -1,0 +1,3 @@
+. ~/.zshenv
+. ~/linux-conf/dotfiles/zsh/config
+. ~/linux-conf/dotfiles/zsh/aliases
