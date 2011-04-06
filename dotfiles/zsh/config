@@ -1,7 +1,7 @@
 
 setopt prompt_subst
 autoload -U colors && colors
-PS1='[%{$fg[green]%}@%m :%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[white]%} \$ %{$reset_color%}'
+PS1='[%{$fg[green]%}@%m:%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[cyan]%} \$ %{$reset_color%}'
 
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
