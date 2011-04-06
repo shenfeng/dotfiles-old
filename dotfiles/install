@@ -14,6 +14,7 @@ ln -s $DOTFILES/gitconfig ~/.gitconfig
 if [ ! -f ~/bin/vcprompt ]; then
 	cd /tmp;
 	wget -c https://github.com/xvzf/vcprompt/raw/master/bin/vcprompt --no-check-certificate
+	chmod +x vcprompt;
 	mkdir -p ~/bin
 	mv vcprompt ~/bin/
 fi
