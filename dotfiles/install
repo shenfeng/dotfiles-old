@@ -37,3 +37,9 @@ if [ ! -f ~/bin/lein ]; then
 	mkdir -p ~/bin
 	mv lein ~/bin/
 fi
+
+#install google appengine proxy
+if [ ! -f ~/bin/proxy-appengine ]; then
+	ln -s ~/linux-conf/localproxy-2.0.0/proxy.py ~/bin/proxy-appengine
+fi
+
