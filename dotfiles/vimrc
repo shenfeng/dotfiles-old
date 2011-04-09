@@ -69,6 +69,17 @@ set wrap "Wrap lines
 set hlsearch
 set incsearch
 
+" To insert space characters whenever the tab key is pressed
+:set expandtab
+" affect the existing tab characters
+" :retab
+
+" the number of space characters that will be inserted when the tab key is pressed
+:set tabstop=4
+
+" change the number of space characters inserted for indentation
+:set shiftwidth=4
+
 
 :colorscheme evening
 
