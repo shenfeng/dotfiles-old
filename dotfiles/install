@@ -26,6 +26,8 @@ if [ ! -f ~/bin/nofgw ]; then
 	echo "#! /bin/bash" >> ~/bin/nofgw;
 	echo "ssh -L 3128:localhost:13128 shenfeng@173.255.249.118 -N" >> ~/bin/nofgw;
 	chmod +x ~/bin/nofgw;
+    # Socks proxy, more handy than the above, no setup on the server
+    # ssh -C2qTnN -D localhost:3218 username@server 
 fi
 	
 # install lein
