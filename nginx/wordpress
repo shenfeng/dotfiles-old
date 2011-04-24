@@ -1,6 +1,6 @@
 # sudo apt-get install nginx php5-cgi spawn-fcgi php5-mysql mysql-server
 
-# /usr/bin/spawn-fcgi -a 127.0.0.1 -p 9000 -u www-data -C 2 -f /usr/bin/php5-cgi
+# sudo /usr/bin/spawn-fcgi -a 127.0.0.1 -p 9000 -u www-data -C 1 -f /usr/bin/php5-cgi
 
 # mysql under [mysql] [mysqld] default-character-set=utf8
 
@@ -19,6 +19,7 @@ server {
         location ~* \.(ico|css|js|gif|jpe?g|png)(\?[0-9]+)?$ {
                 root   /var/www/wordpress;
                 expires max;
+                access_log off;
         }
         location ~ \.php$ {
                 fastcgi_pass   127.0.0.1:9000;
