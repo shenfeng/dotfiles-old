@@ -1,6 +1,6 @@
 [user]
 	name = feng
-	email = shenedu@gmail.com
+	email = feng@onyx-international.com
 [core]
 	editor = vim
 [merge]
@@ -13,7 +13,7 @@
 	ui = always
 [diff]
 [diff]
-	tool = meld
+	tool = diffuse
 [difftool]
 	prompt = false
 [format]

@@ -77,6 +77,8 @@ set incsearch
 " the number of space characters that will be inserted when the tab key is pressed
 :set tabstop=4
 
+:set number
+
 " change the number of space characters inserted for indentation
 :set shiftwidth=4
 

@@ -31,6 +31,13 @@ if [ ! -f ~/bin/nofgw ]; then
     # Socks proxy, more handy than the above, no setup on the server
     # ssh -C2qTnN -D localhost:3218 username@server 
 fi
+
+if [ ! -f ~/bin/my-chrome ] ; then
+    echo "install my-chrome";
+    echo "#! /bin/bash" >> ~/bin/my-chrome;
+    echo "/opt/google/chrome/google-chrome --user-data-dir=/tmp &" >> ~/bin/my-chrome;
+    chmod +x ~/bin/my-chrome;
+fi
 	
 # install lein
 if [ ! -f ~/bin/lein ]; then
