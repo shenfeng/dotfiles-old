@@ -18,5 +18,7 @@ setopt AUTO_CD
 autoload compinit
 compinit
 
+export WORDCHARS='*?_[]~=&;!#$%^(){}'
+
 REPORTTIME=3 # Show elapsed time if command took more than X seconds
 LISTMAX=0 # ask to complete if top of list would scroll off screen

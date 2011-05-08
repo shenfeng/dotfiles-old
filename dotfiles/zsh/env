@@ -1,4 +1,4 @@
 export JAVA_HOME=/usr/lib/jvm/default-java/
 export M2_HOME=/opt/apache-maven-3.0.3
 export M2=$M2_HOME/bin
-PATH=$PATH:~/bin:$M2
+PATH=$PATH:~/bin:$M2:~/local/node/bin
