@@ -1,11 +1,14 @@
 # /bin/bash
 
 DOTFILES=~/linux-conf/dotfiles
+mkdir -p ~/.ssh
+rm -f ~/.ssh/config
 rm -f ~/.zshenv
 rm -f ~/.zshrc
 rm -f ~/.vimrc
 rm -f ~/.gitconfig
 rm -f ~/.tmux.conf
+ln -s $DOTFILES/ssh_config ~/.ssh/config
 ln -s $DOTFILES/zsh/env ~/.zshenv
 ln -s $DOTFILES/zshrc ~/.zshrc
 ln -s $DOTFILES/vimrc ~/.vimrc

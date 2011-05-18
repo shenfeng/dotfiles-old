@@ -1,0 +1,21 @@
+Host server
+    HostName 192.168.1.11
+    User feng
+    ForwardX11 yes
+    ForwardX11Trusted yes
+Host onybooks
+    HostName onybooks.com
+    User shenfeng
+    Compression yes
+Host home
+    HostName butterfly-home.com
+    User feng
+    Compression yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
+Host feng
+    HostName shenfeng.me
+    User feng
+    Compression yes
+    
+
