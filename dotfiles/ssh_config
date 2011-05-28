@@ -1,21 +1,37 @@
-Host server
+Host dev
     HostName 192.168.1.11
     User feng
     ForwardX11 yes
     ForwardX11Trusted yes
-Host onybooks
-    HostName onybooks.com
-    User shenfeng
-    Compression yes
-Host home
-    HostName butterfly-home.com
+Host work
+    HostName onycloud.gicp.net
     User feng
     Compression yes
     ForwardX11 yes
     ForwardX11Trusted yes
+Host onycloud
+    HostName onycloud.com
+    User shenfeng
+    Compression yes
 Host feng
     HostName shenfeng.me
     User feng
     Compression yes
-    
+Host t60
+    HostName home-t60
+    User feng
+    Compression yes
+    ForwardX11 yes
+    ForwardX11Trusted yes
+Host home
+    HostName kunshan-home.no-ip.org
+    User feng
+    Compression yes
+    ForwardX11 yes
+    Port 11122
+    ForwardX11Trusted yes
+Host router
+    HostName kunshan-home.no-ip.org
+    User root
+    Compression yes
 
