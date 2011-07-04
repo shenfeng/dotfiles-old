@@ -1,11 +1,13 @@
 Host dev
-    HostName 192.168.1.11
+    HostName 192.168.1.1
+    Port 11122
     User feng
     ForwardX11 yes
     ForwardX11Trusted yes
 Host work
-    HostName onycloud.gicp.net
+    HostName corp.onycloud.com
     User feng
+    Port 11122
     Compression yes
     ForwardX11 yes
     ForwardX11Trusted yes
@@ -23,15 +25,4 @@ Host t60
     Compression yes
     ForwardX11 yes
     ForwardX11Trusted yes
-Host home
-    HostName kunshan-home.no-ip.org
-    User feng
-    Compression yes
-    ForwardX11 yes
-    Port 11122
-    ForwardX11Trusted yes
-Host router
-    HostName kunshan-home.no-ip.org
-    User root
-    Compression yes
 
