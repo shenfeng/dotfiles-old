@@ -8,12 +8,17 @@ rm -f ~/.zshrc
 rm -f ~/.vimrc
 rm -f ~/.gitconfig
 rm -f ~/.tmux.conf
+rm -f ~/bin/proxy-appengine
+
 ln -s $DOTFILES/ssh_config ~/.ssh/config
 ln -s $DOTFILES/zsh/env ~/.zshenv
 ln -s $DOTFILES/zshrc ~/.zshrc
 ln -s $DOTFILES/vimrc ~/.vimrc
 ln -s $DOTFILES/gitconfig ~/.gitconfig
 ln -s $DOTFILES/tmux.conf ~/.tmux.conf
+
+#install google appengine proxy
+ln -s ~/linux-conf/localproxy-2.0.0/proxy.py ~/bin/proxy-appengine
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
@@ -24,23 +29,8 @@ if [ ! -f ~/bin/vcprompt ]; then
 	mkdir -p ~/bin
 	mv vcprompt ~/bin/
 fi
-
-# install nofgw
-if [ ! -f ~/bin/nofgw ]; then
-	echo "install nofgw";
-	echo "#! /bin/bash" >> ~/bin/nofgw;
-	echo "ssh -L 3128:localhost:13128 shenfeng@173.255.249.118 -N" >> ~/bin/nofgw;
-	chmod +x ~/bin/nofgw;
     # Socks proxy, more handy than the above, no setup on the server
     # ssh -C2qTnN -D localhost:3218 username@server 
-fi
-
-if [ ! -f ~/bin/my-chrome ] ; then
-    echo "install my-chrome";
-    echo "#! /bin/bash" >> ~/bin/my-chrome;
-    echo "/opt/google/chrome/google-chrome --user-data-dir=/tmp &" >> ~/bin/my-chrome;
-    chmod +x ~/bin/my-chrome;
-fi
 	
 # install lein
 if [ ! -f ~/bin/lein ]; then
@@ -51,9 +41,3 @@ if [ ! -f ~/bin/lein ]; then
 	mkdir -p ~/bin
 	mv lein ~/bin/
 fi
-
-#install google appengine proxy
-if [ ! -f ~/bin/proxy-appengine ]; then
-	ln -s ~/linux-conf/localproxy-2.0.0/proxy.py ~/bin/proxy-appengine
-fi
-
