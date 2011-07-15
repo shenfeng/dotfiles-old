@@ -13,7 +13,7 @@ Host work
     ForwardX11Trusted yes
 Host onycloud
     HostName onycloud.com
-    User shenfeng
+    User deploy
     Compression yes
 Host feng
     HostName shenfeng.me
