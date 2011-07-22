@@ -6,15 +6,16 @@ filetype plugin indent on
 " when file change, auto load it
 set autoread
 
-" ignore case when searching is all lowcase, but recognizes uppercase if it's specified
-set ignorecase      
+" ignore case when searching is all lowcase,
+" but recognizes uppercase if it's specified
+set ignorecase
 set smartcase
 
 " set number
 set history=200
 
 " Set the textwidth to be 120 chars
-set textwidth=120
+set textwidth=80
 
 " Make the command-line completion better
 set wildmenu
@@ -74,16 +75,17 @@ set incsearch
 " affect the existing tab characters
 " :retab
 
-" the number of space characters that will be inserted when the tab key is pressed
+" the number of space characters that will be inserted
+" when the tab key is pressed
 :set tabstop=4
 
-:set number
+" :set number
 
 " change the number of space characters inserted for indentation
 :set shiftwidth=4
 
 
-:colorscheme evening
+:colorscheme zenburn
 
 
 " Highlight all instances of the current word under the cursor

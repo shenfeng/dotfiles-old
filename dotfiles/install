@@ -8,11 +8,13 @@ rm -f ~/.zshrc
 rm -f ~/.vimrc
 rm -f ~/.gitconfig
 rm -f ~/.tmux.conf
+rm -f ~/.vim
 rm -f ~/bin/proxy-appengine
 
 ln -s $DOTFILES/ssh_config ~/.ssh/config
 ln -s $DOTFILES/zsh/env ~/.zshenv
 ln -s $DOTFILES/zshrc ~/.zshrc
+ln -s $DOTFILES/vim ~/.vim
 ln -s $DOTFILES/vimrc ~/.vimrc
 ln -s $DOTFILES/gitconfig ~/.gitconfig
 ln -s $DOTFILES/tmux.conf ~/.tmux.conf
@@ -29,9 +31,10 @@ if [ ! -f ~/bin/vcprompt ]; then
 	mkdir -p ~/bin
 	mv vcprompt ~/bin/
 fi
-    # Socks proxy, more handy than the above, no setup on the server
-    # ssh -C2qTnN -D localhost:3218 username@server 
-	
+
+# Socks proxy, more handy than the above, no setup on the server
+# ssh -C2qTnN -D localhost:3218 username@server
+
 # install lein
 if [ ! -f ~/bin/lein ]; then
 	echo "install lein";
