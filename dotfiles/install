@@ -8,8 +8,7 @@ rm -f ~/.zshrc
 rm -f ~/.vimrc
 rm -f ~/.gitconfig
 rm -f ~/.tmux.conf
-rm -f ~/.vim
-rm -f ~/bin/proxy-appengine
+rm -rf ~/.vim
 
 ln -s $DOTFILES/ssh_config ~/.ssh/config
 ln -s $DOTFILES/zsh/env ~/.zshenv
@@ -19,8 +18,6 @@ ln -s $DOTFILES/vimrc ~/.vimrc
 ln -s $DOTFILES/gitconfig ~/.gitconfig
 ln -s $DOTFILES/tmux.conf ~/.tmux.conf
 
-#install google appengine proxy
-ln -s ~/linux-conf/localproxy-2.0.0/proxy.py ~/bin/proxy-appengine
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then

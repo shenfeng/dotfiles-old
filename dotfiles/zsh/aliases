@@ -11,7 +11,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 # allow ease use of emacs to edit file
 alias e='emacsclient -n'
-
+alias em='emacs --maximized &'    # start emacs maximized
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'

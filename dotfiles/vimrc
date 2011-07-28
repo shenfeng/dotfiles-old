@@ -84,7 +84,7 @@ set incsearch
 " change the number of space characters inserted for indentation
 :set shiftwidth=4
 
-
+let g:zenburn_high_Contrast=1
 :colorscheme zenburn
 
 
