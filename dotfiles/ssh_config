@@ -20,7 +20,7 @@ Host feng
     User feng
     Compression yes
 Host t60
-    HostName home-t60
+    HostName feng-t60
     User feng
     Compression yes
     ForwardX11 yes

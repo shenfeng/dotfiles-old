@@ -9,9 +9,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-# allow ease use of emacs to edit file
-alias e='emacsclient -n'
-alias em='emacs --maximized &'    # start emacs maximized
+
 # some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
@@ -38,6 +36,20 @@ alias gd='git difftool --cached'
 
 alias dhclient='dhclient -v'
 alias nc='rlwrap nc'
+
+# allow ease use of emacs to edit file
+alias e='emacsclient -n'
+
+# start emacs maximized
+function em()
+{
+    if [ $# != 0 ]
+    then
+        emacs --maximized $1&
+    else
+        emacs --maximized &
+    fi
+}
 
 # easy open directory in Nautilus
 function go()

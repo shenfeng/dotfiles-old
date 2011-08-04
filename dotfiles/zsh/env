@@ -1,6 +1,6 @@
-export JAVA_HOME=/usr/lib/jvm/default-java
+export JAVA_HOME=/usr/lib/jvm/jdk1.7.0
 export M2_HOME=/opt/apache-maven-3.0.3
 export ANT_HOME=/opt/apache-ant-1.8.2
 export M2=$M2_HOME/bin
-PATH=$PATH:~/bin:$M2:~/local/node/bin:/home/feng/.npm/less/1.0.44/package/bin:/var/lib/gems/1.8/bin:$ANT_HOME/bin
+PATH=$JAVA_HOME/bin:$PATH:~/bin:$M2:~/local/node/bin:/home/feng/.npm/less/1.0.44/package/bin:/var/lib/gems/1.8/bin:$ANT_HOME/bin
 export READER_DB_HOST=192.168.1.11
