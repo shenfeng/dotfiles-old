@@ -1,3 +1,6 @@
+ControlMaster auto
+ControlPath /tmp/ssh_mux_%h_%p_%r
+ControlPersist 1h
 Host dev
     HostName 192.168.1.1
     Port 11122
