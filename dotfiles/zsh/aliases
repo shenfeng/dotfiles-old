@@ -45,9 +45,9 @@ function em()
 {
     if [ $# != 0 ]
     then
-        emacs --maximized $1&
+        emacs --maximized $1&!
     else
-        emacs --maximized &
+        emacs --maximized &!
     fi
 }
 

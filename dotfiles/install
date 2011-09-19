@@ -23,7 +23,7 @@ ln -s $DOTFILES/tmux.conf ~/.tmux.conf
 if [ ! -f ~/bin/vcprompt ]; then
 	echo "install vcprompt";
 	cd /tmp;
-	wget -c https://github.com/xvzf/vcprompt/raw/master/bin/vcprompt --no-check-certificate
+	wget -c https://github.com/djl/vcprompt/raw/master/bin/vcprompt --no-check-certificate
 	chmod +x vcprompt;
 	mkdir -p ~/bin
 	mv vcprompt ~/bin/
