@@ -22,10 +22,16 @@ Host feng
     HostName shenfeng.me
     User feng
     Compression yes
-Host t60
-    HostName feng-t60
-    User feng
+Host server
+    HostName 10.18.101.211
+    User shenfeng
     Compression yes
     ForwardX11 yes
     ForwardX11Trusted yes
+Host home
+    HostName 192.168.1.10
+    User feng
+    Compression yes
+    # ForwardX11 yes
+    # ForwardX11Trusted yes
 
