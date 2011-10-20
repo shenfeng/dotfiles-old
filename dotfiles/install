@@ -2,6 +2,7 @@
 
 DOTFILES=~/linux-conf/dotfiles
 mkdir -p ~/.ssh
+mkdir -p ~/.config/awesome/
 rm -f ~/.ssh/config
 rm -f ~/.zshenv
 rm -f ~/.zshrc
@@ -9,7 +10,13 @@ rm -f ~/.vimrc
 rm -f ~/.gitconfig
 rm -f ~/.tmux.conf
 rm -rf ~/.vim
+rm -rf ~/.fonts
+rm -f ~/.fonts.conf
+rm -f ~/.xinitrc
 
+ln -s $DOTFILES/fonts ~/.fonts
+ln -s $DOTFILES/fonts.conf ~/.fonts.conf
+ln -s $DOTFILES/xinitrc ~/.xinitrc
 ln -s $DOTFILES/ssh_config ~/.ssh/config
 ln -s $DOTFILES/zsh/env ~/.zshenv
 ln -s $DOTFILES/zshrc ~/.zshrc
@@ -17,6 +24,7 @@ ln -s $DOTFILES/vim ~/.vim
 ln -s $DOTFILES/vimrc ~/.vimrc
 ln -s $DOTFILES/gitconfig ~/.gitconfig
 ln -s $DOTFILES/tmux.conf ~/.tmux.conf
+ln -s $DOTFILES/rc.lua ~/.config/awesome/rc.lua
 
 
 # install vcprompt
