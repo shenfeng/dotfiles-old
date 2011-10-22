@@ -15,7 +15,7 @@ require("debian.menu")
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "evilvte"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -152,7 +152,7 @@ for s = 1, screen.count() do
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
-            mylauncher,
+            -- mylauncher,
             mytaglist[s],
             mypromptbox[s],
             layout = awful.widget.layout.horizontal.leftright
@@ -178,9 +178,10 @@ root.buttons(awful.util.table.join(
 globalkeys = awful.util.table.join(
     -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     -- awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+   -- awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
+   awful.key({ modkey,           }, "j", awful.tag.history.restore),
 
-    awful.key({ modkey,           }, "j",
+   awful.key({ modkey,           }, "Tab",
         function ()
             awful.client.focus.byidx( 1)
             if client.focus then client.focus:raise() end
@@ -193,18 +194,18 @@ globalkeys = awful.util.table.join(
     -- awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+    -- awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
+    -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+    -- awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
+    -- awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+    -- awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+    -- awful.key({ modkey,           }, "Tab",
+    --     function ()
+    --         awful.client.focus.history.previous()
+    --         if client.focus then
+    --             client.focus:raise()
+    --         end
+    --     end),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
@@ -267,13 +268,13 @@ for i = 1, keynumber do
                             awful.tag.viewonly(tags[screen][i])
                         end
                   end),
-        awful.key({ modkey, "Control" }, "#" .. i + 9,
-                  function ()
-                      local screen = mouse.screen
-                      if tags[screen][i] then
-                          awful.tag.viewtoggle(tags[screen][i])
-                      end
-                  end),
+        -- awful.key({ modkey, "Control" }, "#" .. i + 9,
+        --           function ()
+        --               local screen = mouse.screen
+        --               if tags[screen][i] then
+        --                   awful.tag.viewtoggle(tags[screen][i])
+        --               end
+        --           end),
         awful.key({ modkey, "Shift" }, "#" .. i + 9,
                   function ()
                       if client.focus and tags[client.focus.screen][i] then

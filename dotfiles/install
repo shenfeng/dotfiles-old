@@ -13,6 +13,8 @@ rm -rf ~/.vim
 rm -rf ~/.fonts
 rm -f ~/.fonts.conf
 rm -f ~/.xinitrc
+rm -f ~/.Xresources
+rm -f ~/.config/awesome/rc.lua
 
 ln -s $DOTFILES/fonts ~/.fonts
 ln -s $DOTFILES/fonts.conf ~/.fonts.conf
@@ -25,6 +27,7 @@ ln -s $DOTFILES/vimrc ~/.vimrc
 ln -s $DOTFILES/gitconfig ~/.gitconfig
 ln -s $DOTFILES/tmux.conf ~/.tmux.conf
 ln -s $DOTFILES/rc.lua ~/.config/awesome/rc.lua
+ln -s $DOTFILES/xresources ~/.Xresources
 
 
 # install vcprompt
