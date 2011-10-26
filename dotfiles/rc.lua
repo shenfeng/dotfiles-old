@@ -113,7 +113,7 @@ end
 
  -- {{{ Tags
  tags = {
-   names  = { "main", emacs, "www", "java", "other" },
+   names  = { "main","www", "java", "other", emacs },
    layout = { layouts[1], layouts[3], layouts[3], layouts[2], layouts[3] }}
 
  for s = 1, screen.count() do
@@ -252,7 +252,11 @@ globalkeys = awful.util.table.join(
     -- awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
-   awful.key({ modkey, }, "e", function () run_or_raise("emacs", { instance = "emacs" }) end),
+   awful.key({ modkey          }, "b",
+             function ()
+                mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
+             end),
+   awful.key({ modkey, }, "`", function () run_or_raise("emacs", { instance = "emacs" }) end),
 
    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
@@ -371,6 +375,8 @@ awful.rules.rules = {
                      awful.client.setslave,
                      keys = clientkeys,
                      buttons = clientbuttons } },
+    { rule = { class = "Emacs", instance = "emacs" },
+      properties = {tag = tags[1][5]}},
     -- { rule = { class = "MPlayer" },
     --   properties = { floating = true } },
     -- { rule = { class = "pinentry" },
