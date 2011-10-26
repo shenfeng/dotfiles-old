@@ -25,6 +25,9 @@ alias df='df -h'
 # color
 alias tree='tree -C'
 
+# easy search src code
+alias s='ack-grep'
+
 #easy to see network
 alias li='lsof -i -nP'
 alias sli='sudo lsof -i -nP'

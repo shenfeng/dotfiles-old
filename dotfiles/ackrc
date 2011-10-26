@@ -1,0 +1,8 @@
+# --pager=less -r
+--type-set
+css=.less,.scss
+--type-set
+jinja2=.jinja2
+--type-set
+clj=.clj
+--smart-case
