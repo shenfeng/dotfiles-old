@@ -31,6 +31,7 @@ alias s='ack-grep'
 #easy to see network
 alias li='lsof -i -nP'
 alias sli='sudo lsof -i -nP'
+alias 'ps?'='ps ax | grep '
 
 alias gb='git branch'
 alias gl='git log'
@@ -53,6 +54,8 @@ function em()
         emacs --maximized &!
     fi
 }
+
+function md () { mkdir -p "$@" && cd "$@"; }
 
 # easy open directory in Nautilus
 function go()

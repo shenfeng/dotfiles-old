@@ -113,8 +113,8 @@ end
 
  -- {{{ Tags
  tags = {
-   names  = { "main","www", "java", "other", emacs },
-   layout = { layouts[1], layouts[3], layouts[3], layouts[2], layouts[3] }}
+    names  = { "main","java", "other", "chrome", "shell", emacs },
+    layout = { layouts[3], layouts[3], layouts[1], layouts[2], layouts[3], layouts[3] }}
 
  for s = 1, screen.count() do
      tags[s] = awful.tag(tags.names, s, tags.layout)
@@ -256,9 +256,20 @@ globalkeys = awful.util.table.join(
              function ()
                 mywibox[mouse.screen].visible = not mywibox[mouse.screen].visible
              end),
-   awful.key({ modkey, }, "`", function () run_or_raise("emacs", { instance = "emacs" }) end),
+   awful.key({ modkey,       }, "`", function ()
+                run_or_raise(emacs, { instance = emacs })
+                awful.tag.viewonly(tags[1][6])
+                                     end),
+   awful.key({ modkey,       }, "w", function ()
+                run_or_raise("chrome", { class = "Google-chrome" })
+                awful.tag.viewonly(tags[1][4])
+                                     end),
+   awful.key({ modkey,       }, "c", function ()
+                run_or_raise(terminal, { class = "Evilvte" })
+                awful.tag.viewonly(tags[1][5])
+                                     end),
 
-   awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
+   awful.key({ modkey,       }, "k", function () awful.client.swap.byidx(  1)    end),
     -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
     -- awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     -- awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
@@ -272,7 +283,7 @@ globalkeys = awful.util.table.join(
     --     end),
 
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    -- awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -376,7 +387,11 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "Emacs", instance = "emacs" },
+      properties = {tag = tags[1][6]}},
+    { rule = { class = "Evilvte", instance = "evilvte" },
       properties = {tag = tags[1][5]}},
+    { rule = { class = "Google-chrome"},
+      properties = {tag = tags[1][4]}},
     -- { rule = { class = "MPlayer" },
     --   properties = { floating = true } },
     -- { rule = { class = "pinentry" },
