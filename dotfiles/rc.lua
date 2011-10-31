@@ -12,7 +12,7 @@ require("debian.menu")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn//theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 emacs = "emacs"
@@ -113,8 +113,8 @@ end
 
  -- {{{ Tags
  tags = {
-    names  = { "main","java", "other", "chrome", "shell", emacs },
-    layout = { layouts[3], layouts[3], layouts[1], layouts[2], layouts[3], layouts[3] }}
+    names  = {"misc-1", "java","misc-2", "media", "chrome", "term", emacs },
+    layout = { layouts[2], layouts[3], layouts[2], layouts[3], layouts[2], layouts[3], layouts[3] }}
 
  for s = 1, screen.count() do
      tags[s] = awful.tag(tags.names, s, tags.layout)
@@ -258,15 +258,15 @@ globalkeys = awful.util.table.join(
              end),
    awful.key({ modkey,       }, "`", function ()
                 run_or_raise(emacs, { instance = emacs })
-                awful.tag.viewonly(tags[1][6])
+                awful.tag.viewonly(tags[1][7])
                                      end),
    awful.key({ modkey,       }, "w", function ()
                 run_or_raise("chrome", { class = "Google-chrome" })
-                awful.tag.viewonly(tags[1][4])
+                awful.tag.viewonly(tags[1][5])
                                      end),
    awful.key({ modkey,       }, "c", function ()
                 run_or_raise(terminal, { class = "Evilvte" })
-                awful.tag.viewonly(tags[1][5])
+                awful.tag.viewonly(tags[1][6])
                                      end),
 
    awful.key({ modkey,       }, "k", function () awful.client.swap.byidx(  1)    end),
@@ -387,10 +387,12 @@ awful.rules.rules = {
                      keys = clientkeys,
                      buttons = clientbuttons } },
     { rule = { class = "Emacs", instance = "emacs" },
-      properties = {tag = tags[1][6]}},
+      properties = {tag = tags[1][7]}},
     { rule = { class = "Evilvte", instance = "evilvte" },
-      properties = {tag = tags[1][5]}},
+      properties = {tag = tags[1][6]}},
     { rule = { class = "Google-chrome"},
+      properties = {tag = tags[1][5]}},
+    { rule = { class = "MPlayer"},
       properties = {tag = tags[1][4]}},
     -- { rule = { class = "MPlayer" },
     --   properties = { floating = true } },

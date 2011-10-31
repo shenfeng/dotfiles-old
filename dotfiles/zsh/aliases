@@ -37,6 +37,8 @@ alias gb='git branch'
 alias gl='git log'
 alias g='git status'
 alias gd='git difftool --cached'
+alias gu='git fetch gerrit && git stash && git rebase gerrit/master &&  git stash pop'
+alias gp='git push gerrit HEAD:refs/for/master'
 
 alias dhclient='dhclient -v'
 alias nc='rlwrap nc'
