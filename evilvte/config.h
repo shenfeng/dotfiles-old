@@ -14,7 +14,7 @@
 // #define BELL_VISIBLE           TRUE
 // #define BELL_URGENT            TRUE
 // #define BUTTON_ORDER_BY_RCFILE TRUE
-// #define CLOSE_DIALOG           TRUE  /* Dialog to confirm close event      */
+#define CLOSE_DIALOG           TRUE  /* Dialog to confirm close event      */
 #define CLOSE_SAFELY           TRUE  /* Do not kill running applications   */
 // #define COLOR_BACKGROUND       "white"
 // #define COLOR_FOREGROUND       "#000000"
