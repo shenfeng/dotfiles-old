@@ -79,6 +79,7 @@ set incsearch
 " when the tab key is pressed
 :set tabstop=4
 
+set diffopt=iwhite,iwhite,filler,vertical
 " :set number
 
 " change the number of space characters inserted for indentation

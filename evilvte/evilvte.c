@@ -2506,51 +2506,6 @@ bool key_press_event(GtkWidget *widget, GdkEventKey *event)
   gtk_window_set_urgency_hint(GTK_WINDOW(main_window), FALSE);
 #endif
 
-#if HOTKEY_TAB_GO_TO_NUMBER
-  if ((event->state & GDK_MOD1_MASK) == GDK_MOD1_MASK) {
-      if (event->keyval == GDK_1) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 0);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_2) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 1)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 1);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_3) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 2)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 2);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_4) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 3)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 3);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_5) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 4)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 4);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_6) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 5)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 5);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_7) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 6)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 6);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_8) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 7)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 7);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_9) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 8)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 8);
-        return TRUE;
-      }
-      if ((event->keyval == GDK_0) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 9)) {
-        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 9);
-        return TRUE;
-      }
-  }
-#endif
-
   if ((event->state & KEY_MOD_MASK) == KEY_MOD_MASK) {
 
 #ifdef HOTKEY_TOGGLE_HOTKEYS
@@ -2873,6 +2828,52 @@ bool key_press_event(GtkWidget *widget, GdkEventKey *event)
 #endif
     }
   }
+
+#if HOTKEY_TAB_GO_TO_NUMBER
+  if (hotkey_status && (event->state & GDK_MOD1_MASK) == GDK_MOD1_MASK) {
+      if (event->keyval == GDK_1) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 0);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_2) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 1)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 1);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_3) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 2)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 2);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_4) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 3)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 3);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_5) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 4)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 4);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_6) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 5)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 5);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_7) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 6)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 6);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_8) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 7)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 7);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_9) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 8)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 8);
+        return TRUE;
+      }
+      if ((event->keyval == GDK_0) && (gtk_notebook_get_n_pages(GTK_NOTEBOOK(notebook)) > 9)) {
+        gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 9);
+        return TRUE;
+      }
+  }
+#endif
+
   return FALSE;
 }
 #endif /* HOTKEY */

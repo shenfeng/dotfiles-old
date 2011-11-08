@@ -4,6 +4,9 @@ DOTFILES=~/linux-conf/dotfiles
 mkdir -p ~/.ssh
 mkdir -p ~/.config/awesome/
 
+rm ~/.vim
+rm ~/.fonts
+
 ln -sf $DOTFILES/fonts ~/.fonts
 ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
 ln -sf $DOTFILES/xinitrc ~/.xinitrc
