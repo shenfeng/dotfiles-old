@@ -8,7 +8,7 @@ require("beautiful")
 require("naughty")
 
 -- Load Debian menu entries
-require("debian.menu")
+-- require("debian.menu")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
@@ -153,12 +153,12 @@ mypromptbox = {}
 mylayoutbox = {}
 mytaglist = {}
 mytaglist.buttons = awful.util.table.join(
-                    awful.button({ }, 1, awful.tag.viewonly),
-                    awful.button({ modkey }, 1, awful.client.movetotag),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, awful.client.toggletag),
-                    awful.button({ }, 4, awful.tag.viewnext),
-                    awful.button({ }, 5, awful.tag.viewprev)
+                    awful.button({ }, 1, awful.tag.viewonly)
+                    -- awful.button({ modkey }, 1, awful.client.movetotag),
+                    -- awful.button({ }, 3, awful.tag.viewtoggle),
+                    -- awful.button({ modkey }, 3, awful.client.toggletag),
+                    -- awful.button({ }, 4, awful.tag.viewnext),
+                    -- awful.button({ }, 5, awful.tag.viewprev)
                     )
 mytasklist = {}
 mytasklist.buttons = awful.util.table.join(
@@ -168,23 +168,24 @@ mytasklist.buttons = awful.util.table.join(
                                               end
                                               client.focus = c
                                               c:raise()
-                                          end),
-                     awful.button({ }, 3, function ()
-                                              if instance then
-                                                  instance:hide()
-                                                  instance = nil
-                                              else
-                                                  instance = awful.menu.clients({ width=250 })
-                                              end
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                              if client.focus then client.focus:raise() end
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                              if client.focus then client.focus:raise() end
-                                          end))
+                                          end)
+                     -- awful.button({ }, 3, function ()
+                     --                          if instance then
+                     --                              instance:hide()
+                     --                              instance = nil
+                     --                          else
+                     --                              instance = awful.menu.clients({ width=250 })
+                     --                          end
+                     --                      end)
+                     -- awful.button({ }, 4, function ()
+                     --                          awful.client.focus.byidx(1)
+                     --                          if client.focus then client.focus:raise() end
+                     --                      end),
+                     -- awful.button({ }, 5, function ()
+                     --                          awful.client.focus.byidx(-1)
+                     --                          if client.focus then client.focus:raise() end
+                     --                      end)
+                                          )
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -192,17 +193,17 @@ for s = 1, screen.count() do
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
     mylayoutbox[s] = awful.widget.layoutbox(s)
-    mylayoutbox[s]:buttons(awful.util.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
-                           awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
+    -- mylayoutbox[s]:buttons(awful.util.table.join(
+    --                        awful.button({ }, 1, function () awful.layout.inc(layouts, 1) end),
+    --                        awful.button({ }, 3, function () awful.layout.inc(layouts, -1) end),
+    --                        awful.button({ }, 4, function () awful.layout.inc(layouts, 1) end),
+    --                        awful.button({ }, 5, function () awful.layout.inc(layouts, -1) end)))
     -- Create a taglist widget
     mytaglist[s] = awful.widget.taglist(s, awful.widget.taglist.label.all, mytaglist.buttons)
 
     -- Create a tasklist widget
     mytasklist[s] = awful.widget.tasklist(function(c)
-                                              return awful.widget.tasklist.label.currenttags(c, s)
+                                             return awful.widget.tasklist.label.currenttags(c, s)
                                           end, mytasklist.buttons)
 
     -- Create the wibox
