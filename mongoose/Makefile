@@ -17,6 +17,7 @@ all:
 # -DSSL_LIB=\"libssl.so.<version>\" - use system versioned SSL shared object
 # -DCRYPTO_LIB=\"libcrypto.so.<version>\" - use system versioned CRYPTO so
 
+COPT= -DNDEBUG
 
 ##########################################################################
 ###                 UNIX build: linux, bsd, mac, rtems
@@ -32,7 +33,7 @@ LIB=		_$(PROG).so
 # "-Wl,--as-needed" turned on by default  in cc command.
 # Also, this is turned in many other distros in static linkage builds.
 linux:
-	$(CC) mongoose.c -shared -fPIC -fpic -o $(LIB) $(LINFLAGS)
+	#$(CC) mongoose.c -shared -fPIC -fpic -o $(LIB) $(LINFLAGS)
 	$(CC) mongoose.c main.c -o $(PROG) $(LINFLAGS)
 
 bsd:
