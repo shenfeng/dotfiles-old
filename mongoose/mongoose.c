@@ -3410,7 +3410,7 @@ static void log_access(const struct mg_connection *conn) {
 
   flockfile(fp);
 
-  (void) fprintf(fp, "%s %d %s:%d %s %5d %s HTTP/%s",
+  (void) fprintf(fp, "%s %d %s:%d %s %7d %s HTTP/%s",
                  ri->request_method ? ri->request_method : "-",
                  conn->request_info.status_code,
                  inet_ntoa(conn->client.rsa.u.sin.sin_addr),
@@ -3419,7 +3419,7 @@ static void log_access(const struct mg_connection *conn) {
                  conn->num_bytes_sent,
                  ri->uri ? ri->uri : "-",
                  ri->http_version);
-  log_header(conn, "Referer", fp);
+  //  log_header(conn, "Referer", fp);
   log_header(conn, "User-Agent", fp);
   (void) fputc('\n', fp);
   (void) fflush(fp);
