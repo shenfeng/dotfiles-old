@@ -17,8 +17,8 @@ beautiful.init("/usr/share/awesome/themes/zenburn//theme.lua")
 -- This is used later as the default terminal and editor to run.
 emacs = "emacs"
 terminal = "evilvte"
-editor = os.getenv("EDITOR") or "vim"
-editor_cmd = terminal .. " -e " .. editor
+-- editor = os.getenv("EDITOR") or "vim"
+-- editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -161,14 +161,14 @@ mytaglist.buttons = awful.util.table.join(
                     -- awful.button({ }, 5, awful.tag.viewprev)
                     )
 mytasklist = {}
-mytasklist.buttons = awful.util.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if not c:isvisible() then
-                                                  awful.tag.viewonly(c:tags()[1])
-                                              end
-                                              client.focus = c
-                                              c:raise()
-                                          end)
+-- mytasklist.buttons = awful.util.table.join(
+--                      awful.button({ }, 1, function (c)
+--                                               if not c:isvisible() then
+--                                                   awful.tag.viewonly(c:tags()[1])
+--                                               end
+--                                               client.focus = c
+--                                               c:raise()
+--                                           end)
                      -- awful.button({ }, 3, function ()
                      --                          if instance then
                      --                              instance:hide()
@@ -185,7 +185,7 @@ mytasklist.buttons = awful.util.table.join(
                      --                          awful.client.focus.byidx(-1)
                      --                          if client.focus then client.focus:raise() end
                      --                      end)
-                                          )
+                                          -- )
 
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
@@ -387,9 +387,9 @@ awful.rules.rules = {
                      awful.client.setslave,
                      keys = clientkeys,
                      buttons = clientbuttons } },
-    { rule = { class = "Emacs", instance = "emacs" },
+    { rule = { class = "Emacs" },
       properties = {tag = tags[1][7]}},
-    { rule = { class = "Evilvte", instance = "evilvte" },
+    { rule = { class = "Evilvte" },
       properties = {tag = tags[1][6]}},
     { rule = { class = "Google-chrome"},
       properties = {tag = tags[1][5]}},
