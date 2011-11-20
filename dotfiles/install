@@ -6,6 +6,8 @@ mkdir -p ~/.config
 
 rm -rf ~/.vim
 rm -rf ~/.fonts
+rm -rf ~/.emacs.d
+rm -rf ~/.config/awesome
 
 ln -sf $DOTFILES/fonts ~/.fonts
 ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
@@ -19,6 +21,7 @@ ln -sf $DOTFILES/ackrc ~/.ackrc
 ln -sf $DOTFILES/gitconfig ~/.gitconfig
 ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
 ln -sf $DOTFILES/awesome ~/.config/awesome
+ln -sf $DOTFILES/emacs.d ~/.emacs.d
 ln -sf $DOTFILES/xresources ~/.Xresources
 
 
