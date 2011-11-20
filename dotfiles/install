@@ -2,10 +2,10 @@
 
 DOTFILES=~/linux-conf/dotfiles
 mkdir -p ~/.ssh
-mkdir -p ~/.config/awesome/
+mkdir -p ~/.config
 
-rm ~/.vim
-rm ~/.fonts
+rm -rf ~/.vim
+rm -rf ~/.fonts
 
 ln -sf $DOTFILES/fonts ~/.fonts
 ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
@@ -18,7 +18,7 @@ ln -sf $DOTFILES/vimrc ~/.vimrc
 ln -sf $DOTFILES/ackrc ~/.ackrc
 ln -sf $DOTFILES/gitconfig ~/.gitconfig
 ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
-ln -sf $DOTFILES/rc.lua ~/.config/awesome/rc.lua
+ln -sf $DOTFILES/awesome ~/.config/awesome
 ln -sf $DOTFILES/xresources ~/.Xresources
 
 

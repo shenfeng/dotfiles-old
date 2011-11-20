@@ -12,7 +12,7 @@ require("naughty")
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/zenburn//theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 emacs = "emacs"
@@ -161,14 +161,14 @@ mytaglist.buttons = awful.util.table.join(
                     -- awful.button({ }, 5, awful.tag.viewprev)
                     )
 mytasklist = {}
--- mytasklist.buttons = awful.util.table.join(
---                      awful.button({ }, 1, function (c)
---                                               if not c:isvisible() then
---                                                   awful.tag.viewonly(c:tags()[1])
---                                               end
---                                               client.focus = c
---                                               c:raise()
---                                           end)
+mytasklist.buttons = awful.util.table.join(
+                     awful.button({ }, 1, function (c)
+                                              if not c:isvisible() then
+                                                  awful.tag.viewonly(c:tags()[1])
+                                              end
+                                              client.focus = c
+                                              c:raise()
+                                          end))
                      -- awful.button({ }, 3, function ()
                      --                          if instance then
                      --                              instance:hide()
@@ -242,7 +242,7 @@ globalkeys = awful.util.table.join(
 
    awful.key({ modkey,           }, "Tab",
         function ()
-            awful.client.focus.byidx( 1)
+            awful.client.focus.byidx(1)
             if client.focus then client.focus:raise() end
         end),
     -- awful.key({ modkey,           }, "k",
