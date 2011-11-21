@@ -20,13 +20,14 @@
 (require 'yasnippet)
 (require 'autopair)
 (require 'zencoding-mode)
+(require 'color-theme-zenburn)
 (require 'coding-style)
 (require 'feng-defuns)
 
 (setq cua-enable-cua-keys nil) ;; don't add C-x,C-c,C-v
 (cua-mode t)                   ;; for rectangles, CUA is nice
 (blink-cursor-mode 1)
-(zenburn)
+(color-theme-zenburn)
 (column-number-mode 1)
 (global-undo-tree-mode)
 

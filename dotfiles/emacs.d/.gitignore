@@ -3,6 +3,7 @@ backups/*
 auto-save-list
 custom.el
 *elc
+elpa/
 places
 url/cookies
 elpa-to-submit/jabber/jabber.info

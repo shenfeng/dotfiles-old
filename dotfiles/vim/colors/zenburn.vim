@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer:   Jani Nurminen <slinky@iki.fi>
-" Last Change:  $Id: zenburn.vim,v 2.21 2011/04/26 12:13:41 slinky Exp slinky $
+" Version:      v 2.22
 " URL:          http://slinky.imukuppi.org/zenburnpage/
 " License:      GNU GPL <http://www.gnu.org/licenses/gpl.html>
 "
@@ -45,6 +45,9 @@
 "    out issues with LineNr, fix directory styles, and their usage in MacVim.
 "  - Paweł Piekarski - Spotted bad FoldColumn and TabLine. Made better 
 "                      FoldColumn colors, fixed TabLine colors.
+"  - Jim - Fix for missing Include group for terminal
+"  - Peter (Sakartu) - ColorColumn fixes
+"  - Please see git log for the others not listed here
 "
 " CONFIGURABLE PARAMETERS:
 "
@@ -113,14 +116,17 @@
 "
 "   Default is to use the new Visual.
 "
-"  * EXPERIMENTAL FEATURE: Zenburn will automatically detect if you 
-"    have ctags_highlighting.vim (by Al Budden, 
-"    http://www.vim.org/scripts/script.php?script_id=2646) enabled, and
-"    will set sensible highlight links. Nothing will happen if you do
-"    not have ctags_highlighting.vim. If you do not want this feature, you can
-"    override the check with:
+"  * EXPERIMENTAL FEATURE: Zenburn would like to support TagHighlight
+"    (an evolved ctags-highlighter) by Al Budden (homepage:
+"    http://www.cgtk.co.uk/vim-scripts/taghighlight).
+"    Current support status is broken: there is no automatic detection of
+"    TagHighlight, no specific language support; however there is some basic
+"    support for Python. If you are a user of TagHighlight and want to help,
+"    please enable:
 "
-"    let g:zenburn_disable_ctags_highlighting_support = 1
+"      let g:zenburn_enable_TagHighlight=1
+"
+"    and improve the corresponding block at the end of the file.
 "
 " NOTE:
 "
@@ -170,25 +176,19 @@ if ! exists("g:zenburn_old_Visual")
     let g:zenburn_old_Visual = 0
 endif
 
-if ! exists("g:zenburn_disable_ctags_highlighting_support")
-    " enabled by default
-    let g:zenburn_disable_ctags_highlighting_support = 0
+if ! exists("g:zenburn_enable_TagHighlight")
+    let g:zenburn_enable_TagHighlight = 0
 endif
 
 " -----------------------------------------------
 
 set background=dark
+
 hi clear
 if exists("syntax_on")
     syntax reset
 endif
 let g:colors_name="zenburn"
-
-" check for ctags-highlighting
-if exists("g:loaded_ctags_highlighting") && g:loaded_ctags_highlighting && ! g:zenburn_disable_ctags_highlighting_support
-    " internal
-    let _zenburn_ctags = 1
-endif
 
 hi Boolean         guifg=#dca3a3
 hi Character       guifg=#dca3a3 gui=bold
@@ -271,6 +271,7 @@ if &t_Co > 255
     hi Float           ctermfg=251
     hi Function        ctermfg=228
     hi Identifier      ctermfg=223
+    hi Include         ctermfg=180   cterm=bold
     hi IncSearch       ctermbg=228   ctermfg=238
     hi Keyword         ctermfg=223   cterm=bold
     hi Label           ctermfg=187   cterm=underline
@@ -332,6 +333,8 @@ if &t_Co > 255
         else
             hi CursorColumn      ctermbg=235   cterm=none
         endif
+
+        hi ColorColumn     ctermbg=235
     else
         hi Normal ctermfg=188 ctermbg=237
         hi Cursor          ctermbg=109
@@ -357,7 +360,7 @@ if &t_Co > 255
         if exists("g:zenburn_color_also_Ignore") && g:zenburn_color_also_Ignore
             hi Ignore          ctermfg=240
         endif
-        
+
         " normal mode, lighter CursorLine
         hi CursorLine      ctermbg=238   cterm=none
 
@@ -366,6 +369,8 @@ if &t_Co > 255
         else
             hi CursorColumn      ctermbg=239   cterm=none
         endif
+
+        hi ColorColumn     ctermbg=238
     endif
 
     if exists("g:zenburn_alternate_Error") && g:zenburn_alternate_Error
@@ -404,8 +409,10 @@ if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
     hi TabLineSel      guifg=#efefef guibg=#1c1c1b gui=bold
     hi TabLine         guifg=#b6bf98 guibg=#181818 gui=bold
     hi NonText         guifg=#404040 gui=bold
-    
+
     hi LineNr          guifg=#9fafaf guibg=#161616
+
+    hi ColorColumn     guibg=#33332f
 else
     " Original, lighter background
     hi Normal          guifg=#dcdccc guibg=#3f3f3f
@@ -425,8 +432,10 @@ else
     hi TabLineSel      guifg=#efefef guibg=#3a3a39 gui=bold
     hi TabLine         guifg=#b6bf98 guibg=#353535 gui=bold
     hi NonText         guifg=#5b605e gui=bold
-    
+
     hi LineNr          guifg=#9fafaf guibg=#262626
+
+    hi ColorColumn     guibg=#484848
 endif
 
 if exists("g:zenburn_old_Visual") && g:zenburn_old_Visual
@@ -494,9 +503,9 @@ if exists("g:zenburn_high_Contrast") && g:zenburn_high_Contrast
     hi TabLine       guifg=#88b090 guibg=#313633 gui=none
     hi TabLineSel    guifg=#ccd990 guibg=#222222
     hi TabLineFill   guifg=#88b090 guibg=#313633 gui=none
-    
+
     hi SpecialKey    guibg=#242424
-    
+
     if &t_Co > 255
         hi FoldColumn    ctermbg=233 ctermfg=109
         hi Folded        ctermbg=233 ctermfg=109
@@ -510,7 +519,7 @@ else
     hi TabLine       guifg=#d0d0b8 guibg=#222222 gui=none
     hi TabLineSel    guifg=#f0f0b0 guibg=#333333 gui=bold
     hi TabLineFill   guifg=#dccdcc guibg=#101010 gui=none
-    
+
     hi SpecialKey    guibg=#444444
 
     if &t_Co > 255
@@ -522,39 +531,64 @@ else
     endif
 endif
 
-" EXPERIMENTAL ctags_highlighting support
+" EXPERIMENTAL TagHighlight support
 " link/set sensible defaults here;
 "
 " For now I mostly link to subset of Zenburn colors, the linkage is based
 " on appearance, not semantics. In later versions I might define more new colours.
 "
 " HELP NEEDED to make this work properly.
-if exists("_zenburn_ctags") && _zenburn_ctags
+
+if exists("g:zenburn_enable_TagHighlight") && g:zenburn_enable_TagHighlight
+        " CTag support may vary, but the first step is to start using it so
+        " we can fix it!
+        "
+        " Consult /plugin/TagHighlight/data/kinds.txt for info on your
+        " language and what's been defined.
+        "
+        " There is potential for language indepedent features here. (Acutally,
+        " seems it may be required for this to be useful...) This way we can
+        " implement features depending on how well CTags are currently implemented
+        " for the language. ie. Global problem for python is annoying.  Special
+        " colors are defined for special language features, etc..
+        "
+        " For now all I care about is python supported features:
+        "   c:CTagsClass
+        "   f:CTagsFunction
+        "   i:CTagsImport
+        "   m:CTagsMember
+        "   v:CTagsGlobalVariable
+        "
+        "   Note: TagHighlight defaults to setting new tags to Keyword
+        "   highlighting.
+
+        " TODO conditionally run each section
+        " BEGIN Python Section
+        hi link Class        Function
+        hi link Import       PythonInclude
+        hi link Member       Function
+        "Note: Function is already defined
 
         " Highlighter seems to think a lot of things are global variables even
         " though they're not. Example: python method-local variable is
         " coloured as a global variable. They should not be global, since
         " they're not visible outside the method.
         " If this is some very bright colour group then things look bad.
-    	hi link CTagsGlobalVariable    Identifier
-        
-        hi CTagsClass             guifg=#acd0b3
-        if &t_Co > 255
-            hi CTagsClass         ctermfg=115
-        endif
+        " hi link GlobalVariable    Identifier
 
-        hi link CTagsImport       Statement
-        hi link CTagsMember       Function
+        " Because of this problem I am disabling the feature by setting it to
+        " Normal instead
+        hi link GlobalVariable Normal
+        " END Python Section
 
-    	hi link CTagsGlobalConstant    Constant
-  
-        " These do not yet have support, I can't get them to appear
+        " Starting point for other languages.
+        hi link GlobalConstant    Constant
         hi link EnumerationValue  Float
         hi link EnumerationName   Identifier
         hi link DefinedName       WarningMsg
-    	hi link LocalVariable     WarningMsg
-    	hi link Structure         WarningMsg
-    	hi link Union             WarningMsg
+        hi link LocalVariable     WarningMsg
+        hi link Structure         WarningMsg
+        hi link Union             WarningMsg
 endif
 
 " TODO check for more obscure syntax groups that they're ok
