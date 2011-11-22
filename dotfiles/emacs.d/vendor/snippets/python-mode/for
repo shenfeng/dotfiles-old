@@ -1,4 +1,5 @@
-#name : for ... in ... : ...
+# -*- mode: snippet -*-
+#name : for
 # --
 for ${var} in ${collection}:
     $0

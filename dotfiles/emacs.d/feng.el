@@ -35,6 +35,7 @@
       kill-whole-line 1
       make-backup-files nil             ; Don't want any backup files
       yas/also-auto-indent-first-line t
+      yas/snippet-dirs "~/.emacs.d/vendor/snippets"
       slime-net-coding-system 'utf-8-unix
       js2-auto-indent-p t
       ediff-split-window-function 'split-window-horizontally
@@ -76,7 +77,7 @@
 (global-set-key [(insert)] nil)
 
 ;;; snippets
-(yas/load-directory "~/.emacs.d/vendor/snippets")
+(yas/load-directory yas/snippet-dirs)
 
 ;;; auto-complete
 (add-to-list 'ac-dictionary-directories
@@ -109,6 +110,7 @@
 (add-hook 'slime-repl-mode-hook 'turn-on-paredit)
 (add-hook 'sql-interactive-mode-hook 'no-trancate-line)
 (add-hook 'python-mode-hook 'feng-python-mode-hook)
+(add-hook 'c-mode-hook 'feng-c-mode-hook)
 
 (remove-hook 'js2-mode-hook 'moz-minor-mode)
 

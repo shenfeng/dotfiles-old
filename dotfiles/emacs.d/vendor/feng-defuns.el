@@ -53,12 +53,6 @@ is a comment, uncomment."
   (interactive)
   (other-window -1))
 
-(defun color-theme-fancy ()
-  "this may rely a bug. a color i like"
-  (interactive)
-  (color-theme-blackboard)
-  (color-theme-zenburn))
-
 (defun smart-split ()
   "Split the window into near 80-column sub-windows, try to
 equally size every window"
@@ -84,7 +78,6 @@ equally size every window"
 (defun coding-start ()
   (interactive)
   (smart-split)
-  (color-theme-zenburn)
   (set-face-attribute 'idle-highlight nil
                       :inherit isearch)
   (set-face-attribute 'show-paren-match-face nil
@@ -166,6 +159,16 @@ equally size every window"
            (0 (progn (compose-region (match-beginning 1)
                                      (match-end 1) "ƒ")
                      nil))))))
+
+(defun feng-c-mode-hook ()
+  (make-local-variable 'ac-ignores)
+  (setq ac-ignores '("in" "for" "if"))
+  (define-key c-mode-map (kbd "C-c C-l") 'copy-line)
+  (idle-highlight-mode t)
+  (hl-line-mode)
+  (autopair-mode)
+  (setq autopair-blink nil)
+  (yas/minor-mode))
 
 (defun feng-clj-mode-hook ()
   (make-local-variable 'ac-ignores)

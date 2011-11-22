@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
-#name : while
+# name: if
 # --
-while ${condition}:
+if (${1:condition}){
     $0
+}
