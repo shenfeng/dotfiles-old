@@ -4829,7 +4829,10 @@ You should use `js2-print-tree' instead of this function."
        ;; I'll wait for people to notice incorrect warnings.
        ((and (= tt js2-EXPR_VOID)
              (js2-expr-stmt-node-p node)) ; but not if EXPR_RESULT
-        (js2-node-has-side-effects (js2-expr-stmt-node-expr node)))
+        (let ((expr (js2-expr-stmt-node-expr node)))
+          (or (js2-node-has-side-effects expr)
+              (when (js2-string-node-p expr)
+                (string= "use strict" (js2-string-node-value expr))))))
        ((= tt js2-COMMA)
         (js2-node-has-side-effects (js2-infix-node-right node)))
        ((or (= tt js2-AND)
@@ -6477,7 +6480,7 @@ of a simple name.  Called before EXPR has a parent node."
           "\\(?:param\\|argument\\)"
           "\\)"
           "\\s-*\\({[^}]+}\\)?"         ; optional type
-          "\\s-*\\([a-zA-Z0-9_$]+\\)?"  ; name
+          "\\s-*\\[?\\([a-zA-Z0-9_$]+\\)?\\]?"  ; name
           "\\>")
   "Matches jsdoc tags with optional type and optional param name.")
 
@@ -9893,10 +9896,12 @@ a comma)."
         (and (js-re-search-backward "\n" nil t)
 	     (progn
 	       (skip-chars-backward " \t")
-	       (backward-char)
-	       (and (js-looking-at-operator-p)
-		    (and (progn (backward-char)
-				(not (looking-at "\\*\\|++\\|--\\|/[/*]"))))))))))
+               (unless (bolp)
+                 (backward-char)
+                 (and (js-looking-at-operator-p)
+                      (and (progn
+                             (backward-char)
+                             (not (looking-at "\\*\\|++\\|--\\|/[/*]")))))))))))
 
 (defun js-end-of-do-while-loop-p ()
   "Returns non-nil if word after point is `while' of a do-while
@@ -10049,7 +10054,7 @@ In particular, return the buffer position of the first `for' kwd."
 
        ((and declaration-indent continued-expr-p)
         (+ declaration-indent js2-basic-offset))
-       
+
        (declaration-indent)
 
        (bracket
@@ -10281,10 +10286,10 @@ in reverse."
 
           ;; nesting-heuristic position, main by default
           (push (setq main-pos normal-col) positions)
-          
+
           ;; delete duplicates and sort positions list
           (setq positions (sort (delete-dups positions) '<))
-          
+
           ;; comma-list continuation lines:  prev line indent takes precedence
           (if same-indent
               (setq main-pos same-indent))
@@ -10297,10 +10302,10 @@ in reverse."
           ;; if bouncing backwards, reverse positions list
           (if backwards
               (setq positions (reverse positions)))
-          
+
           ;; record whether we're already sitting on one of the alternatives
           (setq pos (member cur-indent positions))
-          
+
           (cond
            ;; case 0:  we're one one of the alternatives and this is the
            ;; first time they've pressed TAB on this line (best-guess).
@@ -10322,7 +10327,7 @@ in reverse."
            ;; case 4:  on intermediate position:  cycle to next position
            (t
             (setq computed-pos (js2-position (second pos) positions))))
-          
+
           ;; see if any hooks want to indent; otherwise we do it
           (loop with result = nil
                 for hook in js2-indent-hook
@@ -10332,7 +10337,7 @@ in reverse."
                 finally do
                 (unless (or result (null computed-pos))
                   (indent-line-to (nth computed-pos positions)))))
-      
+
       ;; finally
       (if js2-mode-indent-inhibit-undo
           (setq buffer-undo-list old-buffer-undo-list))
@@ -10491,15 +10496,16 @@ If so, we don't ever want to use bounce-indent."
   (add-to-invisibility-spec '(js2-outline . t))
   (set (make-local-variable 'line-move-ignore-invisible) t)
   (set (make-local-variable 'forward-sexp-function) #'js2-mode-forward-sexp)
+
+  (if (fboundp 'run-mode-hooks)
+      (run-mode-hooks 'js2-mode-hook)
+    (run-hooks 'js2-mode-hook))
+
   (setq js2-mode-functions-hidden nil
         js2-mode-comments-hidden nil
         js2-mode-buffer-dirty-p t
         js2-mode-parsing nil)
-  (js2-reparse)
-
-  (if (fboundp 'run-mode-hooks)
-      (run-mode-hooks 'js2-mode-hook)
-    (run-hooks 'js2-mode-hook)))
+  (js2-reparse))
 
 (defun js2-mode-exit ()
   "Exit `js2-mode' and clean up."
@@ -10765,7 +10771,8 @@ This ensures that the counts and `next-error' are correct."
 (defun js2-echo-error (old-point new-point)
   "Called by point-motion hooks."
   (let ((msg (get-text-property new-point 'help-echo)))
-    (if msg
+    (if (and msg (or (not (current-message))
+                     (string= (current-message) "Quit")))
         (message msg))))
 
 (defalias #'js2-echo-help #'js2-echo-error)
