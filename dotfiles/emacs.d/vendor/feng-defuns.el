@@ -121,6 +121,7 @@ equally size every window"
   (make-local-variable 'ac-ignores)
   (autopair-mode)
   (setq autopair-blink nil)
+  (idle-highlight-mode t)
   (yas/minor-mode)
   (define-key js2-mode-map (kbd "M-<up>") 'move-text-up)
   (define-key js2-mode-map (kbd "M-<down>") 'move-text-down)
