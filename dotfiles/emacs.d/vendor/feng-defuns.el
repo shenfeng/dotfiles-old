@@ -95,7 +95,8 @@ equally size every window"
 
 (defun feng-elisp-mode-hook ()
   (setq mode-name "el")
-  (define-key emacs-lisp-mode-map (kbd "C-M-q") 'session-jump-to-last-change))
+  (define-key emacs-lisp-mode-map [f9] 'edebug-defun)
+  (define-key emacs-lisp-mode-map (kbd "C-M-q") 'session-jump-to-last-change)  )
 
 (defun feng-paredit-key-map ()
   (define-key paredit-mode-map (kbd "M-<up>") 'beginning-of-defun)
@@ -165,11 +166,20 @@ equally size every window"
   (make-local-variable 'ac-ignores)
   (setq ac-ignores '("in" "for" "if"))
   (define-key c-mode-map (kbd "C-c C-l") 'copy-line)
+  (define-key c-mode-map [f9] 'gud-break)
+  (define-key c-mode-map [f6] 'gud-next)
+  (define-key c-mode-map [f5] 'gud-step)
   (idle-highlight-mode t)
   (hl-line-mode)
   (autopair-mode)
   (setq autopair-blink nil)
   (yas/minor-mode))
+
+(defun feng-gud-mode-hook ()
+  (define-key gud-mode-map [f9] 'gud-break)
+  (define-key gud-mode-map [f5] 'gud-step)    ; step into
+  (define-key gud-mode-map [f6] 'gud-next)    ; step
+  (define-key gud-mode-map [f7] 'gud-finish)) ; step return
 
 (defun feng-clj-mode-hook ()
   (make-local-variable 'ac-ignores)

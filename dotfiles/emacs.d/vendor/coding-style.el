@@ -4,11 +4,12 @@
 
 ;; Indent for JavaScript, assuming you use js2-mode
 
-(setq ruby-indent-level 2)
+(setq ruby-indent-level 2
+      css-indent-level 4)
 
-(setq css-indent-level 4)
-
-(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil
+              c-basic-offset 4
+              tab-width 2)
 
 (defun map-filetype (pattern mode)
   "Map from filename patterns to major modes"
@@ -35,15 +36,15 @@
 (add-hook 'clojure-mode-hook 'code-hook)
 (add-hook 'ruby-mode-hook 'code-hook)
 (add-hook 'css-mode-hook 'code-hook)
-;; (add-hook 'clojure-mode-hook 'clojure-test-mode t)
 
 (defun slime-repl-color-hook ()
   (highlight-lines-matching-regexp
-   "\s+\\(rssminer\\|onyx\\|trakr\\)" "hi-green-b"))
+   "\s+\\(rssminer)" "hi-green-b"))
 
 (when (require 'rainbow-delimiters nil 'noerror)
-  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode))
-
-(setq-default indent-tabs-mode nil)
+  (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'c-mode-hook 'rainbow-delimiters-mode)
+  (add-hook 'js2-mode-hook 'rainbow-delimiters-mode))
 
 (provide 'coding-style)

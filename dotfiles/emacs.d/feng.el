@@ -74,7 +74,6 @@
 (global-set-key [f3] 'save-buffer)
 (global-set-key [f4] 'repeat)
 (global-set-key [f7] 'open-in-desktop)
-(global-set-key [f9] 'edebug-defun)
 (global-set-key [(insert)] nil)
 
 ;;; snippets
@@ -102,6 +101,7 @@
 (add-hook 'css-mode-hook 'feng-css-mode-hook)
 (add-hook 'dired-mode-hook 'feng-dired-mode-hook)
 (add-hook 'emacs-lisp-mode-hook 'feng-elisp-mode-hook)
+(add-hook 'gud-mode-hook 'feng-gud-mode-hook)
 (add-hook 'html-mode-hook 'feng-html-mode-hook)
 (add-hook 'js2-mode-hook 'feng-js2-mode-hook)
 (add-hook 'sgml-mode-hook 'zencoding-mode)
