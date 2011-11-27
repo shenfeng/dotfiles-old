@@ -35,6 +35,7 @@
 (setq auto-save-default nil             ; Don't want any auto saving
       kill-whole-line 1
       make-backup-files nil             ; Don't want any backup files
+      redisplay-dont-pause t
       yas/also-auto-indent-first-line t
       yas/snippet-dirs "~/.emacs.d/vendor/snippets"
       slime-net-coding-system 'utf-8-unix
