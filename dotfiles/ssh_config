@@ -1,22 +1,9 @@
 ControlMaster auto
 ControlPath /tmp/ssh_mux_%h_%p_%r
 ControlPersist 1h
-Host dev
-    HostName 192.168.1.1
-    Port 11122
-    User feng
-    ForwardX11 yes
-    ForwardX11Trusted yes
-Host work
-    HostName corp.onycloud.com
-    User feng
-    Port 11122
-    Compression yes
-    ForwardX11 yes
-    ForwardX11Trusted yes
-Host onycloud
-    HostName onycloud.com
-    User deploy
+Host proxy
+    HostName gfwvpn.mei.fm
+    User proxyuser
     Compression yes
 Host feng
     HostName shenfeng.me

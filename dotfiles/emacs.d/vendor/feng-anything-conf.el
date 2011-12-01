@@ -19,8 +19,7 @@
 (defvar feng-file-find-options
   (concat "! -regex '.*src/templates.*'"
           " ! -regex '.*bin/.*'"
-          " ! -regex '.*onybooks/.*'"
-          " ! -regex '.*ezsheets/.*'"))
+          " ! -regex '.*templates/jinja.*'"))
 
 (defun feng-join-file-patten ()
   (mapconcat (lambda (pat) (format "-name \"%s\"" pat))
