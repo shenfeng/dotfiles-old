@@ -4,6 +4,8 @@ autoload -U colors && colors
 PS1='[%{$fg[green]%}@%m:%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[cyan]%} \$
 → %{$reset_color%}'
 
+RPROMPT="%{$fg[yellow]%}%*%{$reset_color%}"
+
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
 HISTSIZE=10000
@@ -14,6 +16,7 @@ setopt HIST_IGNORE_SPACE
 setopt APPEND_HISTORY           # write history only when closing
 setopt EXTENDED_HISTORY         # add more info
 setopt AUTO_CD
+setopt nohup
 
 # Load completions for Ruby, Git, etc.
 autoload compinit
