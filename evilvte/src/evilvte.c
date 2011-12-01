@@ -2871,6 +2871,11 @@ bool key_press_event(GtkWidget *widget, GdkEventKey *event)
         gtk_notebook_set_current_page(GTK_NOTEBOOK(notebook), 9);
         return TRUE;
       }
+      if (event->keyval == GDK_v) {
+          GET_CURRENT_TAB(gtk_notebook_get_current_page(GTK_NOTEBOOK(notebook)));
+          gtk_test_widget_click(term->vte, 4, 0);
+          return TRUE;
+      }
   }
 #endif
 
