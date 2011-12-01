@@ -1,6 +1,7 @@
 # /bin/bash
 
-DOTFILES=~/linux-conf/dotfiles
+ABSOLUTE_PATH=$(readlink -f $0)
+DOTFILES="${ABSOLUTE_PATH%/*}"
 mkdir -p ~/.ssh
 mkdir -p ~/.config
 
