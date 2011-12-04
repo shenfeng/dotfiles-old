@@ -269,6 +269,10 @@ globalkeys = awful.util.table.join(
                 run_or_raise(terminal, { class = "Evilvte" })
                 awful.tag.viewonly(tags[1][6])
                                      end),
+   awful.key({ modkey,       }, "e", function ()
+                run_or_raise("eclipse", { class = "Eclipse" })
+                awful.tag.viewonly(tags[1][2])
+                                     end),
 
    awful.key({ modkey,       }, "k", function () awful.client.swap.byidx(  1)    end),
     -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
