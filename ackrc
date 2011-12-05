@@ -6,4 +6,4 @@ jinja2=.jinja2
 --type-set
 clj=.clj
 --smart-case
---ignore-dir=avos-web
+--ignore-dir=classes

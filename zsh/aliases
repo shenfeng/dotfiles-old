@@ -25,9 +25,6 @@ alias df='df -h'
 # color
 alias tree='tree -C'
 
-# easy search src code
-alias s='ack-grep'
-
 #easy to see network
 alias li='lsof -i -nP'
 alias sli='sudo lsof -i -nP'
@@ -47,8 +44,7 @@ alias nc='rlwrap nc'
 alias e='emacsclient -n'
 
 # start emacs maximized
-function em()
-{
+function em() {
     if [ $# != 0 ]
     then
         emacs --maximized $1&!
@@ -58,15 +54,3 @@ function em()
 }
 
 function md () { mkdir -p "$@" && cd "$@"; }
-
-# easy open directory in Nautilus
-function go()
-{
-    if [ $# != 0 ]              #
-    then
-        gnome-open $1
-    else
-        gnome-open .
-    fi
-}
-

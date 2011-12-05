@@ -1,4 +1,4 @@
-# /bin/bash
+#! /bin/bash -x
 
 ABSOLUTE_PATH=$(readlink -f $0)
 DOTFILES="${ABSOLUTE_PATH%/*}"
@@ -34,6 +34,15 @@ if [ ! -f ~/bin/vcprompt ]; then
 	chmod +x vcprompt;
 	mkdir -p ~/bin
 	mv vcprompt ~/bin/
+fi
+
+if [ ! -f ~/bin/s ]; then
+    echo "install ack-grep";
+    cd /tmp/
+    wget -c http://betterthangrep.com/ack-standalone -O ack-grep
+    chmod +x ack-grep
+    mkdir -p ~/bin
+    mv ack-grep ~/bin/s
 fi
 
 # Socks proxy, more handy than the above, no setup on the server
