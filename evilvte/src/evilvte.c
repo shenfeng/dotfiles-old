@@ -2876,6 +2876,11 @@ bool key_press_event(GtkWidget *widget, GdkEventKey *event)
           gtk_test_widget_click(term->vte, 4, 0);
           return TRUE;
       }
+      if (event->keyval == GDK_w) {
+          GET_CURRENT_TAB(gtk_notebook_get_current_page(GTK_NOTEBOOK(notebook)));
+          vte_terminal_copy_clipboard(VTE_TERMINAL(term->vte));
+          return TRUE;
+      }
   }
 #endif
 
