@@ -170,6 +170,8 @@ equally size every window"
   (define-key c-mode-map [f6] 'gud-next)
   (define-key c-mode-map [f5] 'gud-step)
   (idle-highlight-mode t)
+  (setq comment-start "// "
+        comment-end "")
   (hl-line-mode)
   (autopair-mode)
   (setq autopair-blink nil)

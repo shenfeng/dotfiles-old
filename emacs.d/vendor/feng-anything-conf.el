@@ -145,14 +145,18 @@
 (defcustom feng-anything-for-occurs-list
   '(anything-c-source-imenu
     anything-c-source-occur
-    anything-c-source-tags
-    anything-c-source-grep)
+    ;; anything-c-source-tags
+    ;; anything-c-source-grep
+    )
   "Prefered sources to doing occur."
   :type 'list
   :group 'anything-config)
 
 (defun feng-anthing-for-occur ()
   (interactive)
+  (when (eq major-mode 'python-mode)
+    (setq imenu-create-index-function 'py-imenu-create-index-new)
+    (imenu--make-index-alist t))
   (anything-other-buffer feng-anything-for-occurs-list
                          "*Anything Occor*"))
 

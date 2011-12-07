@@ -7,3 +7,4 @@ jinja2=.jinja2
 clj=.clj
 --smart-case
 --ignore-dir=classes
+--context=1

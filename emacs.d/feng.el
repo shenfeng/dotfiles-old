@@ -16,6 +16,7 @@
 (require 'mustache-mode)
 (require 'feng-anything-conf)
 (require 'session)
+(require 'python-mode)
 (require 'jinja2-mode)
 (require 'undo-tree)
 (require 'yasnippet)
