@@ -44,7 +44,6 @@
 (when (require 'rainbow-delimiters nil 'noerror)
   (add-hook 'clojure-mode-hook 'rainbow-delimiters-mode)
   (add-hook 'emacs-lisp-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'c-mode-hook 'rainbow-delimiters-mode)
-  (add-hook 'js2-mode-hook 'rainbow-delimiters-mode))
+  (add-hook 'c-mode-hook 'rainbow-delimiters-mode))
 
 (provide 'coding-style)
