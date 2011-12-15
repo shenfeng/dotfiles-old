@@ -48,6 +48,11 @@ function E() {
     file=`readlink -f $1`
     emacsclient -n "/sudo:root@localhost:$file"
 }
+# copy full path to clipboard
+function fp() {
+    echo `readlink -f $1`
+    echo -n `readlink -f $1` | xclip -selection clipboard
+}
 
 # start emacs maximized
 function em() {
