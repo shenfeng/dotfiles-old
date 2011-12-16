@@ -43,6 +43,12 @@ alias nc='rlwrap nc'
 # allow ease use of emacs to edit file
 alias e='emacsclient -n'
 
+# edit file with root privs
+function E() {
+    file=`readlink -f $1`
+    emacsclient -n "/sudo:root@localhost:$file"
+}
+
 # start emacs maximized
 function em() {
     if [ $# != 0 ]

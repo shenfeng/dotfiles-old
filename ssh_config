@@ -10,7 +10,7 @@ Host feng
     User feng
     Compression yes
 Host server
-    HostName 10.18.136.211
+    HostName 10.18.109.114
     User shenfeng
     Compression yes
     ForwardX11 yes

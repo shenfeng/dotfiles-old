@@ -3,8 +3,6 @@
 css=.less,.scss
 --type-set
 jinja2=.jinja2
---type-set
-clj=.clj
 --smart-case
 --ignore-dir=classes
 --context=1
