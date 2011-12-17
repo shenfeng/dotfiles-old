@@ -25,6 +25,7 @@
 (require 'color-theme-zenburn)
 (require 'coding-style)
 (require 'feng-defuns)
+(require 'feng-hooks)
 
 (setq cua-enable-cua-keys nil) ;; don't add C-x,C-c,C-v
 (cua-mode t)                   ;; for rectangles, CUA is nice
@@ -91,30 +92,6 @@
 
 (define-key ac-mode-map (kbd "C-c C-n") 'auto-complete)
 (define-key undo-tree-map (kbd "C-.") 'undo-tree-redo)
-
-(add-hook 'after-init-hook 'session-initialize)
-(add-hook 'clojure-mode-hook 'feng-clj-mode-hook)
-(add-hook 'clojure-mode-hook 'set-up-slime-ac)
-(add-hook 'clojure-mode-hook 'turn-on-paredit)
-(add-hook 'css-mode-hook 'feng-css-mode-hook)
-(add-hook 'dired-mode-hook 'feng-dired-mode-hook)
-(add-hook 'emacs-lisp-mode-hook 'feng-elisp-mode-hook)
-(add-hook 'gud-mode-hook 'feng-gud-mode-hook)
-(add-hook 'html-mode-hook 'feng-html-mode-hook)
-(add-hook 'js2-mode-hook 'feng-js2-mode-hook)
-(add-hook 'sgml-mode-hook 'zencoding-mode)
-(add-hook 'slime-repl-mode-hook 'slime-repl-color-hook)
-(add-hook 'slime-repl-mode-hook 'clojure-mode-font-lock-setup)
-(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
-(add-hook 'slime-repl-mode-hook 'turn-on-paredit)
-(add-hook 'sql-interactive-mode-hook 'no-trancate-line)
-(add-hook 'python-mode-hook 'feng-python-mode-hook)
-(add-hook 'c-mode-hook 'feng-c-mode-hook)
-
-(remove-hook 'js2-mode-hook 'moz-minor-mode)
-
-(eval-after-load 'paredit
-  '(feng-paredit-key-map))
 
 (server-start)
 
