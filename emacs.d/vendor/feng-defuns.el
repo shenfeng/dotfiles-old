@@ -85,6 +85,12 @@ equally size every window"
                       :foreground "gold1"
                       :overline nil :slant 'normal))
 
+(defun feng-revert-buffer ()
+  (interactive)
+  (let ((p (point)))
+    (revert-buffer)
+    (goto-char p)))
+
 (defun close-all-buffers ()
   (interactive)
   (mapc 'kill-buffer (buffer-list)))
@@ -192,6 +198,8 @@ equally size every window"
         (clojure-test-mode t)
         (define-key clojure-test-mode-map [f9] 'clojure-test-run-tests))))
   (define-key clojure-mode-map (kbd "C-M-q") 'session-jump-to-last-change)
+  (define-key clojure-mode-map (kbd "C-c .")
+    'slime-edit-definition-other-window)
   (setq ac-ignores '("ns" "df" "dfp" "dt" "ns" "ss" "resp"))
   (yas/minor-mode))
 
