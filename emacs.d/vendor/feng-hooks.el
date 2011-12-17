@@ -17,6 +17,12 @@
   ;; exclude backward
   (define-key paredit-mode-map (kbd "C-M-[") 'paredit-backward-barf-sexp))
 
+(defun feng-magic-key-map ()
+  (define-key magit-mode-map (kbd "M-1") nil)
+  (define-key magit-mode-map (kbd "M-2") nil)
+  (define-key magit-mode-map (kbd "M-3") nil)
+  (define-key magit-mode-map (kbd "M-4") nil))
+
 (defun feng-html-mode-hook ()
   (define-key html-mode-map (kbd "<M-left>") 'sgml-skip-tag-backward)
   (define-key html-mode-map (kbd "<M-right>") 'sgml-skip-tag-forward)
@@ -147,5 +153,8 @@
 
 (eval-after-load 'paredit
   '(feng-paredit-key-map))
+
+(eval-after-load 'magit
+  '(feng-magic-key-map))
 
 (provide 'feng-hooks)
