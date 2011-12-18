@@ -157,4 +157,12 @@
 (eval-after-load 'magit
   '(feng-magic-key-map))
 
+(defun feng-clear-flyspell-keybinding ()
+  (define-key flyspell-mode-map (kbd "C-,") nil)
+  (define-key flyspell-mode-map (kbd "C-.") nil)
+  (define-key flyspell-mode-map (kbd "C-;") nil))
+
+(eval-after-load 'flyspell
+  '(feng-clear-flyspell-keybinding))
+
 (provide 'feng-hooks)
