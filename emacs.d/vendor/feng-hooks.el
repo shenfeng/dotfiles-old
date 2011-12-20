@@ -109,7 +109,7 @@
   (define-key clojure-mode-map (kbd "C-M-q") 'session-jump-to-last-change)
   (define-key clojure-mode-map (kbd "C-c .")
     'slime-edit-definition-other-window)
-  (setq ac-ignores '("ns" "df" "dfp" "dt" "ns" "ss" "resp"))
+  (setq ac-ignores '("ns" "df" "dfp" "dt" "ns" "ss" "resp" "bp"))
   (yas/minor-mode))
 
 (defun feng-css-mode-hook ()
@@ -117,7 +117,7 @@
   (define-key css-mode-map (kbd "M-<up>") 'move-text-up)
   (define-key css-mode-map (kbd "M-<down>") 'move-text-down)
   (setq ac-ignores '("bg" "bgc" "ff" "fl" "fr" "fs" "fw" "lh" "pa" "pr" "ta"
-                     "td" "va" ))
+                     "td" "va" "hi"))
   (yas/minor-mode)
   (hl-line-mode)
   (font-lock-add-keywords
