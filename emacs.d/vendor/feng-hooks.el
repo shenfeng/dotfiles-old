@@ -8,6 +8,7 @@
 (defun feng-paredit-key-map ()
   (define-key paredit-mode-map (kbd "M-<up>") 'beginning-of-defun)
   (define-key paredit-mode-map (kbd "M-<down>") 'end-of-defun)
+  (define-key paredit-mode-map (kbd "M-q") 'nil)
   ;; include forward
   (define-key paredit-mode-map (kbd "C-M-0") 'paredit-forward-slurp-sexp)
   ;; exclude forward
@@ -130,7 +131,6 @@
               'face (list :background
                           (match-string-no-properties 0))))))))
 
-(add-hook 'after-init-hook 'session-initialize)
 (add-hook 'clojure-mode-hook 'feng-clj-mode-hook)
 (add-hook 'clojure-mode-hook 'set-up-slime-ac)
 (add-hook 'clojure-mode-hook 'turn-on-paredit)
@@ -148,6 +148,7 @@
 (add-hook 'sql-interactive-mode-hook 'no-trancate-line)
 (add-hook 'python-mode-hook 'feng-python-mode-hook)
 (add-hook 'c-mode-hook 'feng-c-mode-hook)
+(add-hook 'after-change-functions 'feng-buffer-change-hook)
 
 (remove-hook 'js2-mode-hook 'moz-minor-mode)
 
