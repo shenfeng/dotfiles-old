@@ -145,6 +145,7 @@
 (defcustom feng-anything-for-occurs-list
   '(anything-c-source-imenu
     anything-c-source-occur
+    anything-c-source-etags-select
     ;; anything-c-source-tags
     ;; anything-c-source-grep
     )

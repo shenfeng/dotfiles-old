@@ -9,7 +9,7 @@
 (require 'ac-slime)
 (require 'color-theme)
 (require 'auto-complete-config)
-(require 'js2-mode) ;; emacs --batch -f batch-byte-compile js2-mode.el
+(require 'js2-mode)
 (require 'magit)
 (require 'lua-mode)
 (require 'markdown-mode)

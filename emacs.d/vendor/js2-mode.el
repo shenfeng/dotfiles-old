@@ -4512,8 +4512,7 @@ Function also calls `js2-node-add-children' to add the parent link."
         pos)
     (unless buf
       (error "No buffer available for node %s" node))
-    (save-excursion
-      (set-buffer buf)
+    (with-current-buffer buf
       (buffer-substring-no-properties (setq pos (js2-node-abs-pos node))
                                       (+ pos (js2-node-len node))))))
 
@@ -6985,7 +6984,7 @@ For instance, following a 'this' reference requires a parent function node."
 ;; a nested sub-alist element looks like (INDEX-NAME SUB-ALIST).
 ;; The sub-alist entries immediately follow INDEX-NAME, the head of the list.
 
-(defsubst js2-treeify (lst)
+(defun js2-treeify (lst)
   "Convert (a b c d) to (a ((b ((c d)))))"
   (if (null (cddr lst))  ; list length <= 2
       lst
@@ -7330,8 +7329,7 @@ leaving a statement, an expression, or a function definition."
         ast)
     (or buf (setq buf (current-buffer)))
     (message nil)  ; clear any error message from previous parse
-    (save-excursion
-      (set-buffer buf)
+    (with-current-buffer buf
       (setq js2-scanned-comments nil
             js2-parsed-errors nil
             js2-parsed-warnings nil
