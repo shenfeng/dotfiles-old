@@ -217,11 +217,13 @@ Works in Microsoft Windows, Mac OS X,GNU/Linux ."
 (defun feng-goto-last-change ()
   (interactive)
   (when feng-last-change-pos1
-    (let* ((buffer (find-file-noselect (car feng-last-change-pos1)))
+    (let* ((file (car feng-last-change-pos1))
+           (buffer (find-file-noselect file))
            (win (get-buffer-window buffer)))
       (if win
           (select-window win)
-        (switch-to-buffer-other-window buffer))
+        (if (not (equal file (buffer-file-name)))
+            (switch-to-buffer-other-window buffer)))
       (goto-char (cdr feng-last-change-pos1))
       (feng-swap-last-changes))))
 
