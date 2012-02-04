@@ -80,8 +80,9 @@
 
 (defun feng-c-mode-hook ()
   (make-local-variable 'ac-ignores)
-  (setq ac-ignores '("in" "for" "if"))
+  (setq ac-ignores '("in" "for" "if" "def"))
   (define-key c-mode-map (kbd "C-c C-l") 'copy-line)
+  (define-key c-mode-map (kbd "M-q") 'cleanup-buffer)
   (define-key c-mode-map [f9] 'gud-break)
   (define-key c-mode-map [f6] 'gud-next)
   (define-key c-mode-map [f5] 'gud-step)
