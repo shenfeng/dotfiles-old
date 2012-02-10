@@ -9,16 +9,14 @@ Host feng
     HostName shenfeng.me
     User feng
     Compression yes
-Host server
-    HostName 10.18.109.114
-    User shenfeng
-    Compression yes
-    ForwardX11 yes
-    ForwardX11Trusted yes
 Host home
     HostName 192.168.1.10
     User feng
     Compression yes
     # ForwardX11 yes
     # ForwardX11Trusted yes
-
+Host server
+    HostName 192.168.1.20
+    User feng
+    ForwardX11 yes
+    ForwardX11Trusted yes
