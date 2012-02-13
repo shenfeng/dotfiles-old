@@ -38,3 +38,5 @@ case $TERM in
     preexec () { print -Pn "\e]2;$2\a" }
     ;;
 esac
+
+# source /home/feng/env/meiweienv/bin/activate
