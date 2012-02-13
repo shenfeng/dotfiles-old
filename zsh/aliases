@@ -42,6 +42,7 @@ alias nc='rlwrap nc'
 
 # allow ease use of emacs to edit file
 alias e='emacsclient -n'
+alias xcopy='xclip -selection clipboard'
 
 # edit file with root privs
 function E() {
@@ -51,7 +52,7 @@ function E() {
 # copy full path to clipboard
 function fp() {
     echo `readlink -f $1`
-    echo -n `readlink -f $1` | xclip -selection clipboard
+    echo -n `readlink -f $1` | xcopy
 }
 
 # start emacs maximized

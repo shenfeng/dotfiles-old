@@ -11447,8 +11447,12 @@ move backward across N balanced expressions."
         (js2-backward-sws)
         (forward-char -1)  ; enter the node we backed up to
         (setq node (js2-node-at-point (point) t))
-        (goto-char (if node
-                       (js2-node-abs-pos node)
+        (goto-char (if node (if (and (= (js2-node-type node) js2-STRING)
+                                     (= (js2-node-type (js2-node-at-point
+                                                        (incf (point))))
+                                        js2-STRING))
+                                (+ (js2-node-abs-pos node) 1)
+                              (js2-node-abs-pos node))
                      (point-min)))))
     (t
      ;; forward-sexp
@@ -11457,7 +11461,12 @@ move backward across N balanced expressions."
        (js2-forward-sws)
        (setq node (js2-node-at-point (point) t)
              end (if node (+ (js2-node-abs-pos node)
-                             (js2-node-len node))))
+                             (if (and (= (js2-node-type node) js2-STRING)
+                                      (= (js2-node-type (js2-node-at-point
+                                                         (decf (point))))
+                                         js2-STRING))
+                                 (- (js2-node-len node) 1)
+                               (js2-node-len node)))))
        (goto-char (or end (point-max))))))))
 
 (defun js2-next-error (&optional arg reset)

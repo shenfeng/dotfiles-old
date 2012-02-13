@@ -34,8 +34,8 @@ case $TERM in
         ;;
     *xterm*|rxvt|(dt|k|E)term)
     # man zshmisc
-    precmd () { print -Pn "\e]2;%~\a" }
-    preexec () { print -Pn "\e]2;$2\a" }
+    precmd () { print -Pn "\e]2;%~@%m\a" }
+    preexec () { print -Pn "\e]2;$2@%m\a" }
     ;;
 esac
 
