@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-#name : anonymous function and call
-# --
-(function () {
-  $0
-})();

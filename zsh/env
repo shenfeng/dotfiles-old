@@ -3,4 +3,4 @@ export M2_HOME=/opt/apache-maven-3.0.3
 export ANT_HOME=/opt/apache-ant-1.8.2
 export M2=$M2_HOME/bin
 PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/sbin:/usr/sbin
-PATH=$JAVA_HOME/bin:$PATH:~/bin:$M2:$ANT_HOME/bin
+PATH=~/eclipse:$JAVA_HOME/bin:$PATH:~/bin:$M2:$ANT_HOME/bin:/usr/local/go/bin
