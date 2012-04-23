@@ -72,7 +72,7 @@
   (setq mode-name "js2")
   (define-key js2-mode-map (kbd "M-<up>") 'move-text-up)
   (define-key js2-mode-map (kbd "M-<down>") 'move-text-down)
-  (setq ac-ignores '("log" "df" "fc" "el" "ei" "if" "ife" "for"))
+  (setq ac-ignores '("log" "tc" "df" "fc" "el" "ei" "if" "ife" "for"))
   (yas/minor-mode)
   (autopair-mode)
   (setq autopair-blink nil)
@@ -136,6 +136,9 @@
               'face (list :background
                           (match-string-no-properties 0))))))))
 
+(defun feng-go-mode-hook ()
+  (autopair-mode))
+
 (add-hook 'clojure-mode-hook 'feng-clj-mode-hook)
 (add-hook 'clojure-mode-hook 'set-up-slime-ac)
 (add-hook 'clojure-mode-hook 'turn-on-paredit)
@@ -154,6 +157,7 @@
 (add-hook 'python-mode-hook 'feng-python-mode-hook)
 (add-hook 'c-mode-hook 'feng-c-mode-hook)
 (add-hook 'after-change-functions 'feng-buffer-change-hook)
+(add-hook 'go-mode-hook 'feng-go-mode-hook)
 
 (remove-hook 'js2-mode-hook 'moz-minor-mode)
 

@@ -11,6 +11,7 @@
 (require 'auto-complete-config)
 (require 'js2-mode)
 (require 'magit)
+(require 'go-mode)
 (require 'lua-mode)
 (require 'markdown-mode)
 (require 'mustache-mode)
@@ -36,6 +37,7 @@
 (setq auto-save-default nil             ; Don't want any auto saving
       kill-whole-line 1
       make-backup-files nil             ; Don't want any backup files
+      column-number-mode t
       redisplay-dont-pause t
       yas/also-auto-indent-first-line t
       yas/snippet-dirs "~/.emacs.d/vendor/snippets"

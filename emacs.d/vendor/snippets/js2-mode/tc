@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
-#name : jquery
+#name : tc
 # --
-$(function(){
+try {
   $0
-});
+}
+catch(e) {}
