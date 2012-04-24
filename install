@@ -26,6 +26,7 @@ ln -sf $DOTFILES/awesome ~/.config/awesome
 ln -sf $DOTFILES/emacs.d ~/.emacs.d
 ln -sf $DOTFILES/xresources ~/.Xresources
 ln -sf $DOTFILES/chrome ~/bin/
+ln -sf $DOTFILES/evilvte/evilvte ~/bin/
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
