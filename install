@@ -4,6 +4,7 @@ ABSOLUTE_PATH=$(readlink -f $0)
 DOTFILES="${ABSOLUTE_PATH%/*}"
 mkdir -p ~/.ssh
 mkdir -p ~/.config
+mkdir -p ~/bin
 
 rm -rf ~/.vim
 rm -rf ~/.fonts
@@ -24,7 +25,7 @@ ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
 ln -sf $DOTFILES/awesome ~/.config/awesome
 ln -sf $DOTFILES/emacs.d ~/.emacs.d
 ln -sf $DOTFILES/xresources ~/.Xresources
-
+ln -sf $DOTFILES/chrome ~/bin/
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
@@ -32,7 +33,6 @@ if [ ! -f ~/bin/vcprompt ]; then
 	cd /tmp;
 	wget -c https://github.com/djl/vcprompt/raw/master/bin/vcprompt --no-check-certificate
 	chmod +x vcprompt;
-	mkdir -p ~/bin
 	mv vcprompt ~/bin/
 fi
 
@@ -41,7 +41,6 @@ if [ ! -f ~/bin/s ]; then
     cd /tmp/
     wget -c http://betterthangrep.com/ack-standalone -O ack-grep
     chmod +x ack-grep
-    mkdir -p ~/bin
     mv ack-grep ~/bin/s
 fi
 
@@ -54,6 +53,5 @@ if [ ! -f ~/bin/lein ]; then
 	cd /tmp;
 	wget -c https://github.com/technomancy/leiningen/raw/stable/bin/lein --no-check-certificate
 	chmod +x lein;
-	mkdir -p ~/bin
 	mv lein ~/bin/
 fi
