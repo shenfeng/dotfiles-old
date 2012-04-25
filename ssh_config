@@ -20,3 +20,9 @@ Host server
     User feng
     ForwardX11 yes
     ForwardX11Trusted yes
+Host lion
+    HostName lion.mei.fm
+    User feng
+    Port 2222
+    ForwardX11 yes
+    ForwardX11Trusted yes
