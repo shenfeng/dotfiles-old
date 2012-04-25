@@ -63,8 +63,6 @@
 (defun feng-ibuffer-mode-hook ()
   (define-key ibuffer-mode-map (kbd "U") 'ibuffer-unmark-all))
 
-
-
 (defun feng-js2-mode-hook ()
   (make-local-variable 'ac-ignores)
   (setq js2-basic-offset 2)
@@ -137,7 +135,8 @@
                           (match-string-no-properties 0))))))))
 
 (defun feng-go-mode-hook ()
-  (autopair-mode))
+  (autopair-mode)
+  (setq autopair-blink nil))
 
 (add-hook 'clojure-mode-hook 'feng-clj-mode-hook)
 (add-hook 'clojure-mode-hook 'set-up-slime-ac)
