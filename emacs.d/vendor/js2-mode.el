@@ -305,6 +305,13 @@ If `js2-dynamic-idle-timer-adjust' is 0 or negative,
   :type 'boolean
   :group 'js2-mode)
 
+(defcustom js2-concat-multiline-strings t
+  "Non-nil to automatically turn a newline in mid-string into a
+string concatenation.  When `eol', the '+' will be inserted at the
+end of the line, otherwise, at the beginning of the next line."
+  :type '(choice (const t) (const eol) (const nil))
+  :group 'js2-mode)
+
 (defcustom js2-mode-squeeze-spaces t
   "Non-nil to normalize whitespace when filling in comments.
 Multiple runs of spaces are converted to a single space."
@@ -351,14 +358,6 @@ by setting this variable to t."
 It's perfectly legal to have a `return' and a `return foo' in the
 same function, but it's often an indicator of a bug, and it also
 interferes with type inference (in systems that support it.)"
-  :type 'boolean
-  :group 'js2-mode)
-
-(defcustom js2-strict-cond-assign-warning t
-  "Non-nil to warn about expressions like if (a = b).
-This often should have been '==' instead of '='.  If the warning
-is enabled, you can suppress it on a per-expression basis by
-parenthesizing the expression, e.g. if ((a = b)) ..."
   :type 'boolean
   :group 'js2-mode)
 
@@ -10003,8 +10002,9 @@ In particular, return the buffer position of the first `for' kwd."
             ;; so we'll just guess at it.
             (if (and (> end (point)) ; not empty literal
                      (re-search-forward "[^,]]* \\(for\\) " end t)
-                     ;; not inside a string literal
-                     (not (nth 3 (parse-partial-sexp bracket (point)))))
+                     ;; not inside comment or string literal
+                     (let ((state (parse-partial-sexp bracket (point))))
+                       (not (or (nth 3 state) (nth 4 state)))))
                 (match-beginning 1))))))))
 
 (defun js2-array-comp-indentation (parse-status for-kwd)
@@ -10033,6 +10033,7 @@ In particular, return the buffer position of the first `for' kwd."
       (cond
        ;; indent array comprehension continuation lines specially
        ((and bracket
+             (>= js2-language-version 170)
              (not (js2-same-line bracket))
              (setq beg (js2-indent-in-array-comp parse-status))
              (>= (point) (save-excursion
@@ -10470,7 +10471,7 @@ If so, we don't ever want to use bounce-indent."
   ;; (examples:  doxymacs, column-marker).
   ;; To customize highlighted keywords, use `font-lock-add-keywords'.
   (setq font-lock-defaults '(nil t))
-  
+
   ;; Experiment:  make reparse-delay longer for longer files.
   (if (plusp js2-dynamic-idle-timer-adjust)
       (setq js2-idle-timer-delay
@@ -10758,7 +10759,9 @@ This ensures that the counts and `next-error' are correct."
     (cond
      ;; check if we're inside a string
      ((nth 3 parse-status)
-      (js2-mode-split-string parse-status))
+      (if js2-concat-multiline-strings
+          (js2-mode-split-string parse-status)
+        (insert "\n")))
      ;; check if inside a block comment
      ((nth 4 parse-status)
       (js2-mode-extend-comment))
@@ -10777,6 +10780,7 @@ PARSE-STATUS is as documented in `parse-partial-sexp'."
          (quote-char (nth 3 parse-status))
          (quote-string (string quote-char))
          (string-beg (nth 8 parse-status))
+         (at-eol (eq js2-concat-multiline-strings 'eol))
          (indent (save-match-data
                    (or
                     (save-excursion
@@ -10788,9 +10792,15 @@ PARSE-STATUS is as documented in `parse-partial-sexp'."
                       (if (looking-back "\\+\\s-+")
                           (goto-char (match-beginning 0)))
                       (current-column))))))
-    (insert quote-char "\n")
+    (insert quote-char)
+    (if at-eol
+        (insert " +\n")
+      (insert "\n"))
+    ;; FIXME: This does not match the behavior of `js2-indent-line'.
     (indent-to indent)
-    (insert "+ " quote-string)
+    (unless at-eol
+      (insert "+ "))
+    (insert quote-string)
     (when (eolp)
       (insert quote-string)
       (backward-char 1))))
