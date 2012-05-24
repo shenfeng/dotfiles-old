@@ -26,6 +26,7 @@
 
 (defun feng-html-mode-hook ()
   (define-key html-mode-map (kbd "<M-left>") 'sgml-skip-tag-backward)
+  (define-key html-mode-map (kbd "M-r") 'rename-sgml-tag)
   (define-key html-mode-map (kbd "<M-right>") 'sgml-skip-tag-forward)
   (define-key html-mode-map (kbd "M-<up>") 'move-text-up)
   (define-key html-mode-map (kbd "M-<down>") 'move-text-down)
@@ -69,6 +70,7 @@
   (setq ac-ignores '("log" "tc" "df" "fc" "el" "ei" "if" "ife" "for"))
   (yas/minor-mode)
   (autopair-mode)
+  (js2-highlight-vars-mode)
   (setq autopair-blink nil)
   (font-lock-add-keywords
    'nil `(("\\(function *\\)("

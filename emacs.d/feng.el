@@ -5,6 +5,7 @@
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete/")
 (add-to-list 'load-path "~/.emacs.d/vendor/magit/")
 (add-to-list 'load-path "~/.emacs.d/vendor/yasnippet/")
+(add-to-list 'load-path "~/.emacs.d/vendor/mark-multiple.el")
 
 (require 'ac-slime)
 (require 'color-theme)
@@ -26,6 +27,8 @@
 (require 'coding-style)
 (require 'feng-defuns)
 (require 'feng-hooks)
+(require 'js2-highlight-vars)
+(require 'rename-sgml-tag)
 
 (setq cua-enable-cua-keys nil) ;; don't add C-x,C-c,C-v
 (cua-mode t)                   ;; for rectangles, CUA is nice
