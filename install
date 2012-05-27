@@ -63,3 +63,5 @@ if [ ! -f ~/bin/lein ]; then
 	chmod +x lein;
 	mv lein ~/bin/
 fi
+
+# 010109248 gehua.net user id
