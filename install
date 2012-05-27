@@ -1,7 +1,13 @@
 #! /bin/bash -x
 
+is_mac() { [ $OSTYPE = 'darwin11.0' ]; }
+
+is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
+
 ABSOLUTE_PATH=$(readlink -f $0)
 DOTFILES="${ABSOLUTE_PATH%/*}"
+is_mac && DOTFILES="/Users/shenfeng/dotfiles"
+
 mkdir -p ~/.ssh
 mkdir -p ~/.config
 mkdir -p ~/bin
@@ -11,9 +17,15 @@ rm -rf ~/.fonts
 rm -rf ~/.emacs.d
 rm -rf ~/.config/awesome
 
+is_linux && ln -sf $DOTFILES/xinitrc ~/.xinitrc
+is_linux && ln -sf $DOTFILES/awesome ~/.config/awesome
+is_linux && ln -sf $DOTFILES/xresources ~/.Xresources
+is_linux && ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
+is_linux && ln -sf $DOTFILES/evilvte/evilvte ~/bin/
+is_linux && ln -sf $DOTFILES/chrome ~/bin/
+
 ln -sf $DOTFILES/fonts ~/.fonts
 ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
-ln -sf $DOTFILES/xinitrc ~/.xinitrc
 ln -sf $DOTFILES/ssh_config ~/.ssh/config
 ln -sf $DOTFILES/zsh/env ~/.zshenv
 ln -sf $DOTFILES/zshrc ~/.zshrc
@@ -21,12 +33,7 @@ ln -sf $DOTFILES/vim ~/.vim
 ln -sf $DOTFILES/vimrc ~/.vimrc
 ln -sf $DOTFILES/ackrc ~/.ackrc
 ln -sf $DOTFILES/gitconfig ~/.gitconfig
-ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
-ln -sf $DOTFILES/awesome ~/.config/awesome
 ln -sf $DOTFILES/emacs.d ~/.emacs.d
-ln -sf $DOTFILES/xresources ~/.Xresources
-ln -sf $DOTFILES/chrome ~/bin/
-ln -sf $DOTFILES/evilvte/evilvte ~/bin/
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then

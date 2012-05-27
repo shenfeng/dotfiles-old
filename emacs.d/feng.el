@@ -1,5 +1,11 @@
-(set-face-attribute 'default nil :font "Consolas" :height 114)
-;; (set-face-attribute 'default nil :font "Inconsolata" :height 124)
+(when (eq system-type 'gnu/linux)
+  (set-face-attribute 'default nil :font "Consolas" :height 104))
+
+(when (eq system-type 'darwin)
+  (setq mac-option-modifier 'alt
+        mac-command-modifier 'meta)
+  ;; macbook air is tiny
+  (set-face-attribute 'default nil :font "Consolas" :height 124))
 
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete/")

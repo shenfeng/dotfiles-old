@@ -1,10 +1,19 @@
 
 setopt prompt_subst
 autoload -U colors && colors
-PS1='[%{$fg[green]%}@%m:%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[cyan]%} \$
+case $OSTYPE in
+    darwin11.0)                   # mac, time is not showd, since system has it
+        PS1='[%{$fg[green]%}@%m:%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[cyan]%} \$
 → %{$reset_color%}'
+        RPROMPT="%{$fg[yellow]%}%*%{$reset_color%}"
+        ;;
+    linux-gnu)
+        PS1='[%{$fg[green]%}@%m:%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[cyan]%} \$
+→ %{$reset_color%}'
+        RPROMPT="%{$fg[yellow]%}%*%{$reset_color%}"
+        ;;
+esac
 
-RPROMPT="%{$fg[yellow]%}%*%{$reset_color%}"
 
 HISTFILE=~/.zsh_history
 SAVEHIST=10000
