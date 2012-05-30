@@ -4,36 +4,46 @@ is_mac() { [ $OSTYPE = 'darwin11.0' ]; }
 
 is_linux() { [ $OSTYPE = 'linux-gnu' ]; }
 
-ABSOLUTE_PATH=$(readlink -f $0)
-DOTFILES="${ABSOLUTE_PATH%/*}"
-is_mac && DOTFILES="/Users/shenfeng/dotfiles"
+if is_linux; then
+	ABSOLUTE_PATH=$(readlink -f $0)
+	DOTFILES="${ABSOLUTE_PATH%/*}"
+else
+	DOTFILES="/Users/shenfeng/dotfiles"
+fi
 
 mkdir -p ~/.ssh
 mkdir -p ~/.config
 mkdir -p ~/bin
 
-rm -rf ~/.vim
-rm -rf ~/.fonts
-rm -rf ~/.emacs.d
+rm -rf ~/.Xresources
 rm -rf ~/.config/awesome
+rm -rf ~/.emacs.d
+rm -rf ~/.fonts
+rm -rf ~/.gitconfig
+rm -rf ~/.tmux.conf
+rm -rf ~/.vim
+rm -rf ~/.vimrc
+rm -rf ~/.vimrc
+rm -rf ~/.xinitrc
+rm -rf ~/.zshrc
 
-is_linux && ln -sf $DOTFILES/xinitrc ~/.xinitrc
 is_linux && ln -sf $DOTFILES/awesome ~/.config/awesome
-is_linux && ln -sf $DOTFILES/xresources ~/.Xresources
-is_linux && ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
-is_linux && ln -sf $DOTFILES/evilvte/evilvte ~/bin/
 is_linux && ln -sf $DOTFILES/chrome ~/bin/
+is_linux && ln -sf $DOTFILES/evilvte/evilvte ~/bin/
+is_linux && ln -sf $DOTFILES/tmux.conf ~/.tmux.conf
+is_linux && ln -sf $DOTFILES/xinitrc ~/.xinitrc
+is_linux && ln -sf $DOTFILES/xresources ~/.Xresources
 
+ln -sf $DOTFILES/ackrc ~/.ackrc
+ln -sf $DOTFILES/emacs.d ~/.emacs.d
 ln -sf $DOTFILES/fonts ~/.fonts
 ln -sf $DOTFILES/fonts.conf ~/.fonts.conf
+ln -sf $DOTFILES/gitconfig ~/.gitconfig
 ln -sf $DOTFILES/ssh_config ~/.ssh/config
-ln -sf $DOTFILES/zsh/env ~/.zshenv
-ln -sf $DOTFILES/zshrc ~/.zshrc
 ln -sf $DOTFILES/vim ~/.vim
 ln -sf $DOTFILES/vimrc ~/.vimrc
-ln -sf $DOTFILES/ackrc ~/.ackrc
-ln -sf $DOTFILES/gitconfig ~/.gitconfig
-ln -sf $DOTFILES/emacs.d ~/.emacs.d
+ln -sf $DOTFILES/zsh/env ~/.zshenv
+ln -sf $DOTFILES/zshrc ~/.zshrc
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then

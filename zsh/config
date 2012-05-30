@@ -2,10 +2,11 @@
 setopt prompt_subst
 autoload -U colors && colors
 case $OSTYPE in
-    darwin11.0)                   # mac, time is not showd, since system has it
+    darwin11.0)
         PS1='[%{$fg[green]%}@%m:%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[cyan]%} \$
 → %{$reset_color%}'
-        RPROMPT="%{$fg[yellow]%}%*%{$reset_color%}"
+        # mac, time is not showd, since system has it, right hand side
+        # RPROMPT="%{$fg[yellow]%}%*%{$reset_color%}"
         ;;
     linux-gnu)
         PS1='[%{$fg[green]%}@%m:%{$reset_color%}%~] %{$fg_bold[yellow]%}$(vcprompt)%{$fg_bold[cyan]%} \$
