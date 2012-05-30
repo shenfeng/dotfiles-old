@@ -10,13 +10,17 @@ Host feng
     User feng
     Compression yes
 Host home
-    HostName 192.168.1.2
+    HostName 192.168.1.3
     User feng
-    Compression yes
     ForwardX11 yes
     ForwardX11Trusted yes
 Host server                     # office
     HostName 192.168.1.20
+    User feng
+    ForwardX11 yes
+    ForwardX11Trusted yes
+Host tiger                     # office
+    HostName 192.168.1.25
     User feng
     ForwardX11 yes
     ForwardX11Trusted yes
@@ -25,4 +29,5 @@ Host lion                       # from home
     User feng
     Port 2222
     ForwardX11 yes
+    Compression yes
     ForwardX11Trusted yes
