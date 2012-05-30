@@ -32,6 +32,8 @@ setopt NO_HUP
 autoload compinit
 compinit
 
+fpath=(~/dotfiles/zsh/zsh-completions/ $fpath)
+
 export WORDCHARS='*?_[]~=&;!#$%^(){}'
 
 REPORTTIME=3 # Show elapsed time if command took more than X seconds
