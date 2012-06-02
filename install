@@ -47,7 +47,6 @@ ln -sf $DOTFILES/gitconfig ~/.gitconfig
 ln -sf $DOTFILES/ssh_config ~/.ssh/config
 ln -sf $DOTFILES/vim ~/.vim
 ln -sf $DOTFILES/vimrc ~/.vimrc
-ln -sf $DOTFILES/zsh/env ~/.zshenv
 ln -sf $DOTFILES/zshrc ~/.zshrc
 
 # install vcprompt

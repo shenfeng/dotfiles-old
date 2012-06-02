@@ -1,13 +1,14 @@
 case $OSTYPE in
     darwin11.0)
             export PATH=~/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
-            export WWW=1
+            export LC_ALL=en_US.UTF-8
             ;;
     linux-gnu)
             export JAVA_HOME=/usr/lib/jvm/jdk1.7.0_04
             export M2_HOME=/opt/apache-maven-3.0.4
             export ANT_HOME=/opt/apache-ant-1.8.3
             export M2=$M2_HOME/bin
+            export LC_ALL=en_US.UTF-8
             PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/sbin:/usr/sbin
             PATH=~/eclipse:$JAVA_HOME/bin:$PATH:~/bin:$M2:$ANT_HOME/bin:/usr/local/go/bin
             ;;
