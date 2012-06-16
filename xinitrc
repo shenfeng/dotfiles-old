@@ -1,5 +1,5 @@
 # wmname LG3D
-
+xset r rate 250 60 # faster keyboard
 xset b off  # disable bell
 
 xmodmap -e 'keycode 66 = Control_L'
