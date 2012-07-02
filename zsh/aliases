@@ -31,7 +31,7 @@ alias sli='sudo lsof -i -nP'
 alias 'ps?'='ps ax | grep '
 
 alias gb='git branch'
-alias gl='git log'
+alias gl='git lg'
 alias g='git status'
 alias gd='git difftool --cached'
 alias gud='git fetch gerrit && git stash && git rebase gerrit/dev &&  git stash pop'
