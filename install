@@ -48,6 +48,7 @@ ln -sf $DOTFILES/ssh_config ~/.ssh/config
 ln -sf $DOTFILES/vim ~/.vim
 ln -sf $DOTFILES/vimrc ~/.vimrc
 ln -sf $DOTFILES/zshrc ~/.zshrc
+ln -sf $DOTFILES/pyline ~/bin/pyline
 
 # install vcprompt
 if [ ! -f ~/bin/vcprompt ]; then
