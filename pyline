@@ -10,7 +10,7 @@ import re
 import getopt
 
 # parse options for module imports
-opts, args = getopt.getopt(sys.argv[1:], 'm:')
+opts, args = getopt.getopt(sys.argv[1:], 'lm:')   # parse log
 opts = dict(opts)
 if '-m' in opts:
     for imp in opts['-m'].split(','):
@@ -23,10 +23,30 @@ if not cmd.strip():
 codeobj = compile(cmd, 'command', 'eval')
 write = sys.stdout.write
 
+def seg_access_log(line):
+    delimiters = {'[': ']', '"': '"'}
+    idx, count, current, delimiter, words = 0, len(line), '', ' ', []
+    while idx < count:
+        c = line[idx]
+        if c == delimiter:
+            if current:
+                words.append(current)
+                current = ''
+            delimiter = ' '               # reset
+        elif delimiters.get(c):
+            delimiter = delimiters.get(c)
+        else:
+            current += c
+        idx += 1
+    return words
+
 for numz, line in enumerate(sys.stdin):
     line = line[:-1]
     num = numz + 1
-    words = [w for w in line.strip().split(' ') if len(w)]
+    if '-l' in opts:
+        words = seg_access_log(line)
+    else:
+        words = [w for w in line.strip().split(' ') if len(w)]
     result =  eval(codeobj, globals(), locals())
     if result is None or result is False:
         continue
