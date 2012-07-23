@@ -8,6 +8,7 @@
 import sys
 import re
 import getopt
+from urlparse import urljoin, urlparse
 
 # parse options for module imports
 opts, args = getopt.getopt(sys.argv[1:], 'lm:')   # parse log
@@ -22,6 +23,9 @@ if not cmd.strip():
     
 codeobj = compile(cmd, 'command', 'eval')
 write = sys.stdout.write
+
+def host(url):
+    return urlparse(url).netloc
 
 def seg_access_log(line):
     delimiters = {'[': ']', '"': '"'}
