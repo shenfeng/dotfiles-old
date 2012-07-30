@@ -1,5 +1,5 @@
 case $OSTYPE in
-    darwin11.0)
+    darwin12.0)
             export PATH=~/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/X11/bin
             export LC_ALL=en_US.UTF-8
             ;;
