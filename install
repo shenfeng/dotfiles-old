@@ -80,3 +80,4 @@ if [ ! -f ~/bin/lein ]; then
 fi
 
 # 010109248 gehua.net user id
+# rm -f ~/.zcompdump; compinit
