@@ -134,6 +134,7 @@
 
 (defun feng-go-mode-hook ()
   (autopair-mode)
+  (define-key go-mode-map (kbd "M-q") 'gofmt)
   (setq autopair-blink nil))
 
 (add-hook 'clojure-mode-hook 'feng-clj-mode-hook)
