@@ -1,6 +1,6 @@
 ControlMaster auto
 ControlPath /tmp/ssh_mux_%h_%p_%r
-ControlPersist 1h
+ControlPersist 10h
 Host proxy
     HostName gfwvpn.mei.fm
     User proxyuser
@@ -16,7 +16,7 @@ Host home
     ForwardX11 yes
     ForwardX11Trusted yes
 Host server                     # office
-    HostName 192.168.1.20
+    HostName 192.168.1.21
     User feng
     Port 2222
     ForwardX11 yes
