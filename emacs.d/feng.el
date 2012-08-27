@@ -26,6 +26,7 @@
 (require 'python-mode)
 (require 'jinja2-mode)
 (require 'undo-tree)
+(require 'bar-cursor)
 (require 'yasnippet)
 (require 'autopair)
 (require 'zencoding-mode)
@@ -38,15 +39,12 @@
 
 (setq cua-enable-cua-keys nil) ;; don't add C-x,C-c,C-v
 (cua-mode t)                   ;; for rectangles, CUA is nice
+(bar-cursor-mode)
 (blink-cursor-mode 1)
 (color-theme-zenburn)
 (column-number-mode 1)
 (global-undo-tree-mode)
 (global-auto-revert-mode)
-
-(ignore-errors                          ; emacs-goodies
-  (require 'bar-cursor)
-  (bar-cursor-mode))
 
 (setq auto-save-default nil             ; Don't want any auto saving
       kill-whole-line 1
