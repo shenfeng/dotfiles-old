@@ -5,6 +5,8 @@ openjdk-7-jdk openjdk-7-source redis-server rdesktop
 gtk-chtheme gnome-themes ruby-sass rake inotify-tools mysql-server
 suckless-tools vim
 
+bwm-ng
+
 ranger aria2 dstat
 
 python-pygments  ruby1.9.1-dev flashplugin-nonfree alsa-utils apache2-utils

@@ -42,6 +42,11 @@
 (color-theme-zenburn)
 (column-number-mode 1)
 (global-undo-tree-mode)
+(global-auto-revert-mode)
+
+(ignore-errors                          ; emacs-goodies
+  (require 'bar-cursor)
+  (bar-cursor-mode))
 
 (setq auto-save-default nil             ; Don't want any auto saving
       kill-whole-line 1
