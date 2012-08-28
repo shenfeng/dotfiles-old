@@ -1,5 +1,6 @@
-(when (eq system-type 'gnu/linux)
-  (set-face-attribute 'default nil :font "Consolas" :height 104))
+(ignore-errors                          ; emacs --daemon error
+  (when (eq system-type 'gnu/linux)
+    (set-face-attribute 'default nil :font "Consolas" :height 104)))
 
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'alt
