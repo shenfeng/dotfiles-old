@@ -20,6 +20,10 @@ set textwidth=80
 " Make the command-line completion better
 set wildmenu
 
+:let mapleader = ","
+map <leader>e :tabe<SPACE>
+map <Tab> :tabn<CR>
+map <S-Tab> :tabN<CR>
 
 set tags=./tags,~/tags
 
@@ -86,7 +90,7 @@ set diffopt=iwhite,iwhite,filler,vertical
 :set shiftwidth=4
 
 let g:zenburn_high_Contrast=1
-:colorscheme zenburn
+" :colorscheme zenburn
 
 
 " Highlight all instances of the current word under the cursor
