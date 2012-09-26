@@ -13,5 +13,6 @@ case $OSTYPE in
             export LC_ALL=en_US.UTF-8
             PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/sbin:/usr/sbin
             PATH=~/eclipse:$JAVA_HOME/bin:$PATH:~/bin:$M2:$ANT_HOME/bin:/usr/local/go/bin
+            PATH=$PATH:/home/feng/android/android-sdk-linux/tools:/home/feng/android/android-sdk-linux/platform-tools
             ;;
 esac
