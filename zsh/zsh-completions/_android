@@ -38,15 +38,12 @@
 #  * Julien Nicoulaud <julien.nicoulaud@gmail.com>
 #
 # ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
-# ------------------------------------------------------------------------------
 
-
-typeset -A opt_args
-local context state line curcontext="$curcontext"
 
 _android() {
+  typeset -A opt_args
+  local context state line curcontext="$curcontext"
+
   local ret=1
   
   _arguments -C -A "-*" \
@@ -324,3 +321,11 @@ _android_sdk_update_filters() {
 }
 
 _android "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

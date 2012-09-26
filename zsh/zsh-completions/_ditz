@@ -14,14 +14,11 @@
 #  * technolize (https://github.com/technolize)
 #
 # ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
-# ------------------------------------------------------------------------------
 
 
-ME=ditz
-COMMANDS=--commands
-OPTIONS='<options>'
+local ME=ditz
+local COMMANDS=--commands
+local OPTIONS='<options>'
 
 if (($CURRENT == 2)); then
   # We're completing the first word after the tool: the command.
@@ -46,3 +43,11 @@ else
           ;;
       esac
 fi
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

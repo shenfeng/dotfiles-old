@@ -14,13 +14,7 @@
 #  * Frank Louwers (https://github.com/franklouwers)
 #
 # ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
-# ------------------------------------------------------------------------------
 
-
-# These flags should be available everywhere according to man knife
-knife_general_flags=( --help --server-url --key --config --editor --format --log_level --logfile --no-editor --user --print-after --version --yes )
 
 # knife has a very special syntax, some example calls are:
 # knife status
@@ -34,6 +28,10 @@ knife_general_flags=( --help --server-url --key --config --editor --format --log
 _knife() {
   local curcontext="$curcontext" state line
   typeset -A opt_args
+
+  # These flags should be available everywhere according to man knife
+  knife_general_flags=( --help --server-url --key --config --editor --format --log_level --logfile --no-editor --user --print-after --version --yes )
+
   cloudproviders=(bluebox ec2 rackspace slicehost terremark)
   _arguments \
     '1: :->knifecmd'\
@@ -191,3 +189,11 @@ _cookbook_versions() {
 }
 
 _knife "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

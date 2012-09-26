@@ -37,13 +37,10 @@
 #  * Hideo Hattori <hhatto.jp@gmail.com>
 #
 # ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
-# ------------------------------------------------------------------------------
-
-local context state line
 
 _pygmentize() {
+  local context state line
+
   _arguments -s -S \
     '-h[prints help]:' \
     '-V[prints the package version]:' \
@@ -140,3 +137,11 @@ _pygmentize_caching_policy() {
 }
 
 _pygmentize "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

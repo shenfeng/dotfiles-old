@@ -12,14 +12,11 @@
 #  * Hideo Hattori (https://github.com/hhatto)
 #
 # ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
-# ------------------------------------------------------------------------------
 
-typeset -A opt_args
-local context state line
+_setup.py() {
+  typeset -A opt_args
+  local context state line
 
-_setuppy() {
   _arguments -s -S \
     "--verbose[run verbosely (default)]" \
     "-v[run verbosely (default)]" \
@@ -700,4 +697,12 @@ _setuppy_upload_docs() {
     "*::setup.py commands:_setuppy"
 }
 
-_setuppy "$@"
+_setup.py "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

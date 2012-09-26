@@ -28,11 +28,11 @@ setopt EXTENDED_HISTORY         # add more info
 setopt AUTO_CD
 setopt NO_HUP
 
+fpath=($fpath ~/dotfiles/zsh/zsh-completions)
+
 # Load completions for Ruby, Git, etc.
 autoload compinit
 compinit
-
-fpath=(~/dotfiles/zsh/zsh-completions $fpath)
 
 export WORDCHARS='*?_[]~=&;!#$%^(){}'
 

@@ -37,15 +37,12 @@
 #  * Julien Nicoulaud <julien.nicoulaud@gmail.com>
 #
 # ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
-# ------------------------------------------------------------------------------
 
-
-local context curcontext="$curcontext" state line
-typeset -A opt_args
 
 _perf() {
+  local context curcontext="$curcontext" state line
+  typeset -A opt_args
+
   local ret=1
 
   _arguments -C \
@@ -272,3 +269,11 @@ _perf_cmds() {
 }
 
 _perf "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

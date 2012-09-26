@@ -14,19 +14,7 @@
 #  * technolize (https://github.com/technolize)
 #
 # ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
-# ------------------------------------------------------------------------------
 
-
-typeset -ga nul_args
-nul_args=(
-  '--settings=-[the Python path to a settings module.]:file:_files'
-  '--pythonpath=-[a directory to add to the Python path.]::directory:_directories'
-  '--traceback[print traceback on exception.]'
-  "--version[show program's version number and exit.]"
-  {-h,--help}'[show this help message and exit.]'
-)
 
 _managepy-adminindex(){
   _arguments -s : \
@@ -224,7 +212,16 @@ _applist() {
   _values 'Application' $apps && ret=0
 }
 
-_managepy() {
+_manage.py() {
+  local -a nul_args
+  nul_args=(
+    '--settings=-[the Python path to a settings module.]:file:_files'
+    '--pythonpath=-[a directory to add to the Python path.]::directory:_directories'
+    '--traceback[print traceback on exception.]'
+    "--version[show program's version number and exit.]"
+    {-h,--help}'[show this help message and exit.]'
+  )
+
   local curcontext=$curcontext ret=1
   
   if ((CURRENT == 2)); then
@@ -237,4 +234,12 @@ _managepy() {
   fi
 }
 
-_managepy "$@"
+_manage.py "$@"
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

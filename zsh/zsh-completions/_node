@@ -28,17 +28,15 @@
 # Description
 # -----------
 #
-#  Completion script for Node.js v0.6.11 (http://nodejs.org)
+#  Completion script for Node.js v0.8.4 (http://nodejs.org)
 #
 # ------------------------------------------------------------------------------
 # Authors
 # -------
 #
 #  * Mario Fernandez (https://github.com/sirech)
+#  * Nicholas Penree (https://github.com/drudge)
 #
-# ------------------------------------------------------------------------------
-# -*- mode: zsh; sh-indentation: 2; indent-tabs-mode: nil; sh-basic-offset: 2; -*-
-# vim: ft=zsh sw=2 ts=2 et
 # ------------------------------------------------------------------------------
 
 local curcontext="$curcontext" state line ret=1
@@ -47,10 +45,22 @@ typeset -A opt_args
 _arguments -C \
   '(- 1 *)--help[print options help]' \
   '(- 1 *)'{-v,--version}'[print node version]' \
+  '(--no-deprecation)--no-deprecation[silence deprecation warnings]' \
+  '(--trace-deprecation)--trace-deprecation[show stack traces on deprecations]' \
   '(- 1 *)--v8-options[print v8 command line options]' \
+  '(--max-stack-size)--max-stack-size=[set max v8 stack size (bytes)]' \
   '(-e --eval)'{-e,--eval}'[evaluate script]:Inline Script' \
+  '(-i --interactive)'{-i,--interactive}'[always enter the REPL even if stdin does not appear to be a terminal]' \
   '(-p --print)'{-p,--print}'[print result of --eval]' \
   '(--vars)--vars[print various compiled-in variables]' \
   '*:JS Script:_files -g "*.js"' && ret=0
 
 return ret
+
+# Local Variables:
+# mode: Shell-Script
+# sh-indentation: 2
+# indent-tabs-mode: nil
+# sh-basic-offset: 2
+# End:
+# vim: ft=zsh sw=2 ts=2 et

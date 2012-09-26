@@ -6,7 +6,7 @@
   (setq mac-option-modifier 'alt
         mac-command-modifier 'meta)
   ;; macbook air is tiny
-  (set-face-attribute 'default nil :font "Monaco" :height 134))
+  (set-face-attribute 'default nil :font "Monaco" :height 122))
 
 (add-to-list 'load-path "~/.emacs.d/vendor/")
 (add-to-list 'load-path "~/.emacs.d/vendor/auto-complete/")
