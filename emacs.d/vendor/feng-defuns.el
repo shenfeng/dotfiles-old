@@ -59,8 +59,11 @@ equally size every window"
   (interactive)
   (defun compute-width-helper (w)
     "More than 220 column, can be split to 3, else 2"
-    (if (> (window-width w) 220) 80
-      (+ (/ (window-width w) 2) 1)))
+    (let* ((width (window-width nil)))
+      (cond ((> width 240) (/ width 3))
+            ((> width 220) 80)
+            ((> width 160) (/ width 2))
+            ((> width 0) width))))
   (defun smart-split-helper (w)
     "Helper function to split a given window into two, the first of which has
     80 columns."
