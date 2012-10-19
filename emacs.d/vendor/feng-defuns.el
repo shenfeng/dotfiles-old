@@ -62,7 +62,7 @@ equally size every window"
     (let* ((width (window-width nil)))
       (cond ((> width 240) (/ width 3))
             ((> width 220) 80)
-            ((> width 160) (/ width 2))
+            ((> width 130) (/ width 2))
             ((> width 0) width))))
   (defun smart-split-helper (w)
     "Helper function to split a given window into two, the first of which has
