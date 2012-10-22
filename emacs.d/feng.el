@@ -24,6 +24,7 @@
 (require 'markdown-mode)
 (require 'mustache-mode)
 (require 'feng-anything-conf)
+(require 'go-autocomplete)
 (require 'python-mode)
 (require 'jinja2-mode)
 (require 'undo-tree)
