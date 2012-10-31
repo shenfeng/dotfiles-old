@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: fprintf
-# --
-fprintf(${1:stdout},"$2", ${});
-$0

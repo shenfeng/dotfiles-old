@@ -81,3 +81,13 @@ fi
 
 # 010109248 gehua.net user id
 # rm -f ~/.zcompdump; compinit
+
+
+# google.com.             283     IN      A       74.125.128.101
+# google.com.             283     IN      A       74.125.128.100
+# google.com.             283     IN      A       74.125.128.139
+# google.com.             283     IN      A       74.125.128.138
+# google.com.             283     IN      A       74.125.128.113
+# google.com.             283     IN      A       74.125.128.102
+# http://203.208.45.209/
+# 203.208.46.145

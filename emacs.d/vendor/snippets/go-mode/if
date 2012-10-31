@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
-#name : tc
+#name : if
 # --
-try {
+if ${1:condition} {
   $0
-}catch(e) {}
+}

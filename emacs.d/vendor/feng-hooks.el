@@ -80,7 +80,7 @@
 
 (defun feng-c-mode-hook ()
   (make-local-variable 'ac-ignores)
-  (setq ac-ignores '("in" "for" "if" "def"))
+  (setq ac-ignores '("in" "for" "if" "def" "pr"))
   (define-key c-mode-map (kbd "C-c C-l") 'copy-line)
   (define-key c-mode-map (kbd "M-q") 'cleanup-buffer)
   (define-key c-mode-map [f9] 'gud-break)
@@ -134,6 +134,8 @@
 
 (defun feng-go-mode-hook ()
   (autopair-mode)
+  (setq ac-ignores '("pr", "df"))
+  (yas/minor-mode)
   (define-key go-mode-map (kbd "M-q") 'gofmt)
   (setq autopair-blink nil))
 
