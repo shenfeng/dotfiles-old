@@ -4,26 +4,40 @@
 
 (require 'cl)
 
-(defvar starter-kit-packages (list 'idle-highlight-mode
-                                   'ruby-mode
-                                   'inf-ruby
+(defvar starter-kit-packages (list 'anything
+                                   'anything-config
+                                   'clojure-test-mode
+                                   'paredit
                                    'css-mode
-                                   ;; 'js2-mode
-                                   ;; 'redo+
-                                   ;; 'goto-last-change
-                                   ;; 'gist
-                                   ;; 'find-file-in-project
-                                   ;; 'magit
+                                   'go-mode
+                                   'idle-highlight-mode
+                                   'inf-ruby
+                                   'python-mode
+                                   'lua-mode
+                                   'magit
+                                   'markdown-mode
+                                   'mustache-mode
+                                   'rainbow-delimiters
+                                   ;; 'ac-nrepl
+                                   ;; 'nrepl
+                                   'ruby-mode
                                    'swank-clojure
-                                   'clojure-test-mode)
+                                   'undo-tree
+                                   'zenburn-theme
+                                   'zencoding-mode)
+  ;; 'js2-mode
+  ;; 'redo+
+  ;; 'goto-last-change
+  ;; 'gist
+  ;; 'find-file-in-project
+  ;; 'magit
   "Libraries that should be installed by default.")
 
 (defun starter-kit-elpa-install ()
   "Install all starter-kit packages that aren't installed."
   (interactive)
   (dolist (package starter-kit-packages)
-    (unless (or (member package package-activated-list)
-                (functionp package))
+    (unless (package-installed-p package)
       (message "Installing %s" (symbol-name package))
       (package-install package))))
 

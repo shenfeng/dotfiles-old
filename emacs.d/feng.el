@@ -1,6 +1,6 @@
 (ignore-errors                          ; emacs --daemon error
   (when (eq system-type 'gnu/linux)
-    (set-face-attribute 'default nil :font "Consolas" :height 104)))
+    (set-face-attribute 'default nil :font "Consolas" :height 122)))
 
 (when (eq system-type 'darwin)
   (setq mac-option-modifier 'alt
@@ -9,13 +9,10 @@
   (set-face-attribute 'default nil :font "Monaco" :height 122))
 
 (add-to-list 'load-path "~/.emacs.d/vendor/")
-(add-to-list 'load-path "~/.emacs.d/vendor/auto-complete/")
-(add-to-list 'load-path "~/.emacs.d/vendor/magit/")
 (add-to-list 'load-path "~/.emacs.d/vendor/yasnippet/")
 (add-to-list 'load-path "~/.emacs.d/vendor/mark-multiple.el")
 
 (require 'ac-slime)
-(require 'color-theme)
 (require 'auto-complete-config)
 (require 'js2-mode)
 (require 'magit)
@@ -24,15 +21,10 @@
 (require 'markdown-mode)
 (require 'mustache-mode)
 (require 'feng-anything-conf)
-(require 'go-autocomplete)
-(require 'python-mode)
 (require 'jinja2-mode)
-(require 'undo-tree)
 (require 'bar-cursor)
 (require 'yasnippet)
 (require 'autopair)
-(require 'zencoding-mode)
-(require 'color-theme-zenburn)
 (require 'coding-style)
 (require 'feng-defuns)
 (require 'feng-hooks)
@@ -43,7 +35,7 @@
 (cua-mode t)                   ;; for rectangles, CUA is nice
 (bar-cursor-mode)
 (blink-cursor-mode 1)
-(color-theme-zenburn)
+(load-theme 'zenburn t)
 (column-number-mode 1)
 (global-undo-tree-mode)
 (global-auto-revert-mode)
@@ -94,8 +86,7 @@
 (yas/load-directory yas/snippet-dirs)
 
 ;;; auto-complete
-(add-to-list 'ac-dictionary-directories
-             "~/.emacs.d/vendor/auto-complete/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)
 (setq ac-auto-show-menu 0.2
       ac-fuzzy-enable t
@@ -112,3 +103,5 @@
 
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'downcase-region 'disabled nil)
+
+(add-to-list 'auto-mode-alist '("\\.tpl$" . mustache-mode))

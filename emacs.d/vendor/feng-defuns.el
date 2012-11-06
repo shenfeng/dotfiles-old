@@ -81,12 +81,13 @@ equally size every window"
 (defun coding-start ()
   (interactive)
   (smart-split)
-  (set-face-attribute 'idle-highlight nil
-                      :inherit isearch)
+  ;; (set-face-attribute 'idle-highlight nil
+  ;;                     :inherit isearch)
   (set-face-attribute 'show-paren-match-face nil
                       :weight 'bold :underline t
                       :foreground "gold1"
-                      :overline nil :slant 'normal))
+                      :overline nil :slant 'normal)
+  )
 
 (defun feng-revert-buffer ()
   (interactive)

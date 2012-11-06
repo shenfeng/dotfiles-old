@@ -74,8 +74,8 @@
                (propertize (file-name-nondirectory fname)
                            'face 'feng-grep-file-font
                            'help-echo fname) ":"
-               (propertize lineno 'face font-lock-function-name-face) ":"
-               (anything-c-grep-highlight-match str)) i)))
+                           (propertize lineno 'face font-lock-function-name-face) ":"
+                           (anything-c-grep-highlight-match str)) i)))
 
 (defun feng-anything-c-tags-transformer (candidates)
   (loop for i in candidates
