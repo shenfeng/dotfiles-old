@@ -5,7 +5,7 @@
 (remove-hook 'kill-emacs-hook 'anything-c-adaptive-save-history)
 (define-key anything-map (kbd "C-e") 'anything-execute-persistent-action)
 
-(defun feng-project-root ()
+(defun feng-project-root (&rest args)
   (expand-file-name
    (or (locate-dominating-file default-directory ".git")
        "~/workspace")))

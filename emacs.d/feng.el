@@ -41,6 +41,8 @@
 (global-auto-revert-mode)
 
 (setq auto-save-default nil             ; Don't want any auto saving
+      ack-command "s "
+      ack-default-directory-function 'feng-project-root
       kill-whole-line 1
       make-backup-files nil             ; Don't want any backup files
       column-number-mode t

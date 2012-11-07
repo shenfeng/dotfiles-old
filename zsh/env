@@ -16,3 +16,5 @@ case $OSTYPE in
             PATH=$PATH:/home/feng/android/android-sdk-linux/tools:/home/feng/android/android-sdk-linux/platform-tools
             ;;
 esac
+
+export GOPATH=$HOME/workspace/gocode

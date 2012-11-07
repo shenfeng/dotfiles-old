@@ -6,25 +6,27 @@
 
 (defvar starter-kit-packages (list 'anything
                                    'anything-config
+                                   'auto-complete
                                    'clojure-test-mode
-                                   'paredit
                                    'css-mode
-                                   'go-mode
+                                   ;; 'go-mode
                                    'idle-highlight-mode
                                    'inf-ruby
-                                   'python-mode
                                    'lua-mode
                                    'magit
                                    'markdown-mode
                                    'mustache-mode
+                                   'paredit
+                                   'python-mode
                                    'rainbow-delimiters
-                                   ;; 'ac-nrepl
-                                   ;; 'nrepl
                                    'ruby-mode
                                    'swank-clojure
                                    'undo-tree
                                    'zenburn-theme
-                                   'zencoding-mode)
+                                   'zencoding-mode
+                                   ;; 'ac-nrepl
+                                   ;; 'nrepl
+                                   )
   ;; 'js2-mode
   ;; 'redo+
   ;; 'goto-last-change
