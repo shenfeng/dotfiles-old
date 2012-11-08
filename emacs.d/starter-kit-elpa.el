@@ -7,6 +7,7 @@
 (defvar starter-kit-packages (list 'anything
                                    'anything-config
                                    'auto-complete
+                                   'ack
                                    'clojure-test-mode
                                    'css-mode
                                    ;; 'go-mode
